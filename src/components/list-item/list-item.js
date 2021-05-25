@@ -8,6 +8,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import StarsIcon from '@material-ui/icons/Star';
 
 const ListItem = (props) => {
 
@@ -15,17 +16,31 @@ const ListItem = (props) => {
 
     const useStyles = makeStyles({
         root: {
-          maxWidth: 345
+          maxWidth: '15rem'
         },
         media: {
-          height: 340,
+          height: '20rem',
           overflow: 'hidden'
         },
+        descr: {
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            display: "-webkit-box",
+            "-webkit-line-clamp": 5,
+            "-webkit-box-orient": "vertical"
+        },
+        rating: {    
+            display: 'flex',
+            alignItems: 'center'
+        },
+        icon: {
+            fontSize: '2rem',
+            marginRight: '.7rem',
+            color: 'orange'
+        }
       });
 
     const classes = useStyles();
-
-    //const descr = summary.slice(3,-3);
 
     return(
         <Card className={classes.root}>
@@ -37,11 +52,18 @@ const ListItem = (props) => {
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
-                        {name}
+                        {name}  
                     </Typography>
-                    <Typography variant="body2" color="textSecondary" component="p">
-                        {summary}
+                    <Typography className={classes.rating} gutterBottom /* variant="h5"  */component="h4">
+                        <StarsIcon color="action" className={classes.icon} /> 
+                        <div>
+                        {
+                                rating.average ? rating.average : 'none'
+                            }
+                        </div>
+                              
                     </Typography>
+                    <Typography className={classes.descr} variant="body2" color="textSecondary" component="p" dangerouslySetInnerHTML={{__html: summary}}/>
                 </CardContent>
             </CardActionArea>
             <CardActions>

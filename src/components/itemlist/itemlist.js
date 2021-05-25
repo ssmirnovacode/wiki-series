@@ -1,13 +1,24 @@
 import React from 'react';
-import './itemlist.scss';
 import ListItem from '../list-item/list-item';
+import { makeStyles } from '@material-ui/core/styles';
 
 const Itemlist = (props) => {
+
+    const useStyles = makeStyles({
+        root: {
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '1rem',
+            margin: '2rem',
+        }
+      });
+
+    const classes = useStyles();
 
     const {series} = props;
 
     return(
-        <div>
+        <section className={classes.root}>
                 {
                     series.map(item => {
                         const {id,...itemProps} = item;
@@ -17,7 +28,7 @@ const Itemlist = (props) => {
                         )
                     })
                 }
-            </div>
+            </section>
     )
 }
 
