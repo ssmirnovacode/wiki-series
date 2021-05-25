@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import './app.scss';
-import ListItem from '../list-item/list-item';
+import Itemlist from '../itemlist/itemlist';
 
 const getItems = async (url) => {
     const res = await fetch(url);
@@ -9,13 +9,13 @@ const getItems = async (url) => {
 
 const App = () => {
 
-    const [series, setSeries] = useState([]);
+    const [items, setItems] = useState([]);
 
     const [query, setQuery] = useState('');
 
     useEffect( () => {
         getItems(`http://api.tvmaze.com/search/shows?q=${query}`)
-        .then(res => {setSeries(res); console.log('Search completed')});
+        .then(res => {setItems(res); console.log('Search completed')});
     }, [query]);
 
 
@@ -24,17 +24,7 @@ const App = () => {
             <h1>Series list</h1><br/>
             <input type="text" name="query" value={query} onChange={(e) => setQuery(e.target.value)}/>
             
-            <div>
-                {
-                    series.map(item => {
-                        const {id,...itemProps} = item;
-
-                        return(
-                            <ListItem key={item.show.id} {...itemProps} />
-                        )
-                    })
-                }
-            </div>
+            <Itemlist series={items} />
         </main>
     )
 }

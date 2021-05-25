@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import './list-item.scss';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -47,7 +47,7 @@ const ListItem = (props) => {
             <CardActions>
 {/*                 <Button size="small" color="primary">
                 Share
-                </Button> */}
+                </Button> */} 
                 <Button size="small" color="primary">
                 Learn More
                 </Button>
