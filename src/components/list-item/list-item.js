@@ -16,7 +16,9 @@ const ListItem = (props) => {
 
     const useStyles = makeStyles({
         root: {
-          maxWidth: '15rem'
+          maxWidth: '15rem',
+          backgroundColor: 'rgba(0,0,0, 0.5)',
+          color: 'white'
         },
         media: {
           height: '20rem',
@@ -27,7 +29,8 @@ const ListItem = (props) => {
             textOverflow: "ellipsis",
             display: "-webkit-box",
             "-webkit-line-clamp": 5,
-            "-webkit-box-orient": "vertical"
+            "-webkit-box-orient": "vertical",
+            color: 'white'
         },
         rating: {    
             display: 'flex',
