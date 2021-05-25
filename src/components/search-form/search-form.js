@@ -28,7 +28,7 @@ const SearchForm = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        setFinalQuery(query);
+        setFinalQuery(query); 
         console.log('Submit completed');;
       }
 

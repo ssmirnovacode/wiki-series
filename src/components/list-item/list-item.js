@@ -16,7 +16,7 @@ const ListItem = (props) => {
 
     const useStyles = makeStyles({
         root: {
-          maxWidth: '15rem',
+          maxWidth: '18rem',
           backgroundColor: 'rgba(0,0,0, 0.5)',
           color: 'white'
         },

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './app.scss';
 import Itemlist from '../itemlist/itemlist';
-import SearchForm from '../search-form/search-form';
+import Header from '../header/header';
 
 const getItems = async (url) => {
     const res = await fetch(url);
@@ -21,10 +21,9 @@ const App = () => {
 
 
     return(
-        <main>
+        <main className="main">
+            <Header  setFinalQuery={setFinalQuery}  />
             <h1>Series list</h1><br/>
-            
-            <SearchForm setFinalQuery={setFinalQuery} />
             
             <Itemlist series={items} />
         </main>
