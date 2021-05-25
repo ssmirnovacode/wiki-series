@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './app.scss';
 import Itemlist from '../itemlist/itemlist';
+import SearchForm from '../search-form/search-form';
 
 const getItems = async (url) => {
     const res = await fetch(url);
@@ -11,18 +12,19 @@ const App = () => {
 
     const [items, setItems] = useState([]);
 
-    const [query, setQuery] = useState('');
+    const [finalQuery, setFinalQuery] = useState('');
 
     useEffect( () => {
-        getItems(`http://api.tvmaze.com/search/shows?q=${query}`)
+        getItems(`http://api.tvmaze.com/search/shows?q=${finalQuery}`)
         .then(res => {setItems(res); console.log('Search completed')});
-    }, [query]);
+    }, [finalQuery]);
 
 
     return(
         <main>
             <h1>Series list</h1><br/>
-            <input type="text" name="query" value={query} onChange={(e) => setQuery(e.target.value)}/>
+            
+            <SearchForm setFinalQuery={setFinalQuery} />
             
             <Itemlist series={items} />
         </main>

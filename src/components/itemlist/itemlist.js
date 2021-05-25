@@ -8,8 +8,7 @@ const Itemlist = (props) => {
         root: {
             display: 'flex',
             flexWrap: 'wrap',
-            gap: '1rem',
-            margin: '2rem',
+            gap: '1rem'
         }
       });
 
