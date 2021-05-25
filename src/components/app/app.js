@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import './app.scss';
 import Itemlist from '../itemlist/itemlist';
 import Header from '../header/header';
+import Navigation from '../navigation/navigation';
 
 const getItems = async (url) => {
     const res = await fetch(url);
@@ -23,6 +24,7 @@ const App = () => {
     return(
         <main className="main">
             <Header  setFinalQuery={setFinalQuery}  />
+            <Navigation />
             <h1>Series list</h1><br/>
             
             <Itemlist series={items} />
