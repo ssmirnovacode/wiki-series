@@ -84,11 +84,11 @@ const useStyles = makeStyles((theme) => ({
 
 const Header = (props) =>  {
 
-        const [query, setQuery] = React.useState('');
+        const [endpoint, setEndpoint] = React.useState('');
 
         const handleSubmit = (event) => {
             event.preventDefault();
-            props.setFinalQuery(query);
+            props.setFinalQuery(endpoint);
             console.log('Submit completed');;
         }
         const classes = useStyles();
@@ -200,7 +200,7 @@ const Header = (props) =>  {
                             input: classes.inputInput,
                             }}
                             inputProps={{ 'aria-label': 'search' }}
-                            value={query} onChange={(e) => setQuery(e.target.value)}
+                            value={endpoint} onChange={(e) => setEndpoint(e.target.value)}
                         />
                     </form>
                 </div>
