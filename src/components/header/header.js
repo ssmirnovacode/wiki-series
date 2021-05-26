@@ -227,13 +227,13 @@ const Header = (props) =>  {
       
 }
 
-const mapStateToProps = (state) => ({
-  /* items: state.items,
-  query: state.query */
+const mapStateToProps = state => ({
+  items: state.items,
+  query: state.query
 });
 
 const mapDispatchToProps = {
   setQuery
 };
 
-export default connect(mapStateToProps)(mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

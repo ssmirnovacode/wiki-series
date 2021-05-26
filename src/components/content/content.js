@@ -2,6 +2,9 @@ import React, {useState, useEffect} from 'react';
 import Itemlist from '../itemlist/itemlist';
 import Loading from '../loading/loading';
 
+import {connect} from 'react-redux';
+import {loadItems} from '../../redux/actions';
+
 const getItems = async (url) => {
     const res = await fetch(url);
     return await res.json();
@@ -9,41 +12,52 @@ const getItems = async (url) => {
 
 const Content = (props) => {
 
-    const { /* page, */ finalQuery } = props;
+    const { /* page, */ items, query } = props;
 
     const [appState, setAppstate] = useState({
-        items: [],
+        items: items,
         loading: false,
         error: false,
         noneFound: false
     });
 
-    //const [finalQuery, setFinalQuery] = useState('');
 
     useEffect( () => {
         setAppstate(appState => ({
             ...appState,
             loading: true
         }));
-        getItems(`http://api.tvmaze.com/search/shows?q=${finalQuery}`) //url depends on page
+        //console.log(query);
+        getItems(`http://api.tvmaze.com/search/shows?q=${query}`) //url depends on page
         .then(res => {
-            res.length > 0 ? setAppstate(appState => ({
-                ...appState,
-                items: res,
-                loading: false
-            })) : setAppstate(appState => ({
-                ...appState,
-                items: [],
-                loading: false,
-                noneFound: true
-            }))        
+             if (res.length > 0) {
+                loadItems(res);
+                setAppstate(appState => ({
+                    ...appState,
+                    loading: false,
+                    items: res
+                }));
+                
+                //console.log(res);
+                console.log(items);
+                console.log('items loaded');
+             }
+             else {
+                setAppstate(appState => ({
+                    ...appState,
+                    loading: false,
+                    noneFound: true,
+                    items: []
+                }));
+                loadItems([]);
+             }      
         })
         .catch(() => setAppstate(appState => ({
             ...appState,
             loading: false,
             error: true
         })));
-    }, [finalQuery]);
+    }, [query]);
 
 
     return(
@@ -51,11 +65,17 @@ const Content = (props) => {
             <h1>Series list</h1><br/>
             {
                 appState.loading ? <Loading /> :
-                !appState.noneFound? <Itemlist series={appState.items} /> : <div>No series found</div>
+                !appState.noneFound ? <Itemlist series={appState.items} /> : <div>No series found</div>
             }
             
         </main>
     )
 }
 
-export default Content;
+const mapStateToProps = (state) => ({
+    items: state.items,
+    query: state.query
+  });
+
+  
+export default connect(mapStateToProps)(Content);
