@@ -1,63 +1,22 @@
 import React, {useState, useEffect} from 'react';
 import './app.scss';
-import Itemlist from '../itemlist/itemlist';
 import Header from '../header/header';
 import Navigation from '../navigation/navigation';
-import Loading from '../loading/loading';
-
-const getItems = async (url) => {
-    const res = await fetch(url);
-    return await res.json();
-}
+import {BrowserRouter as Router, Route } from 'react-router-dom';
+import Content from '../content/content'
 
 const App = () => {
 
-    const [appState, setAppstate] = useState({
-        items: [],
-        loading: false,
-        error: false,
-        noneFound: false
-    });
-
     const [finalQuery, setFinalQuery] = useState('');
 
-    useEffect( () => {
-        setAppstate(appState => ({
-            ...appState,
-            loading: true
-        }));
-        getItems(`http://api.tvmaze.com/search/shows?q=${finalQuery}`)
-        .then(res => {
-            res.length > 0 ? setAppstate(appState => ({
-                ...appState,
-                items: res,
-                loading: false
-            })) : setAppstate(appState => ({
-                ...appState,
-                items: [],
-                loading: false,
-                noneFound: true
-            }))        
-        })
-        .catch(() => setAppstate(appState => ({
-            ...appState,
-            loading: false,
-            error: true
-        })));
-    }, [finalQuery]);
-
-
     return(
-        <main className="main">
+        <Router>
             <Header  setFinalQuery={setFinalQuery}  />
             <Navigation />
-            <h1>Series list</h1><br/>
-            {
-                appState.loading ? <Loading /> :
-                appState.noneFound? <Itemlist series={appState.items} /> : <div>No series found</div>
-            }
+            <Route path={'/'} component={() => <Content  finalQuery={finalQuery} />} />  {/* to be changed for SeriesPage  */}
             
-        </main>
+            
+        </Router>
     )
 }
 
