@@ -64,7 +64,7 @@ const Content = (props) => {
             <h1>Series list</h1><br/>
             {
                 appState.loading ? <Loading /> :
-                appState.cards ? <Itemlist series={appState.cards} /> : <div>No series found</div>
+                appState.cards.length > 0 ? <Itemlist series={appState.cards} /> : <div>No series found</div>
             }
             
         </main>

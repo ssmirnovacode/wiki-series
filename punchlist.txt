@@ -1,2 +1,0 @@
-Inconsistencies:
-1. Content - items from store not used after all
