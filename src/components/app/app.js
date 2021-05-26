@@ -11,13 +11,33 @@ const getItems = async (url) => {
 
 const App = () => {
 
-    const [items, setItems] = useState([]);
+    const [appState, setAppstate] = useState({
+        items: [],
+        loading: true,
+        error: false,
+        noneFound: false
+    });
 
     const [finalQuery, setFinalQuery] = useState('');
 
     useEffect( () => {
         getItems(`http://api.tvmaze.com/search/shows?q=${finalQuery}`)
-        .then(res => {setItems(res); console.log('Search completed')});
+        .then(res => {
+            res.length > 0 ? setAppstate(appState => ({
+                ...appState,
+                items: res,
+                loading: false
+            })) : setAppstate(appState => ({
+                ...appState,
+                items: [],
+                noneFound: true
+            }))        
+        })
+        .catch(() => setAppstate(appState => ({
+            ...appState,
+            loading: false,
+            error: true
+        })));
     }, [finalQuery]);
 
 
@@ -26,8 +46,10 @@ const App = () => {
             <Header  setFinalQuery={setFinalQuery}  />
             <Navigation />
             <h1>Series list</h1><br/>
+            {
+                appState.items.length > 0 ? <Itemlist series={appState.items} /> : <div>No series found</div>
+            }
             
-            <Itemlist series={items} />
         </main>
     )
 }

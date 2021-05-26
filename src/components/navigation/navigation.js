@@ -27,7 +27,7 @@ const Navigation = () => {
                 value={value}
                 TabIndicatorProps={{style: {background:'white'}}}
                 onChange={handleChange}
-                aria-label="disabled tabs example" className={classes.tabs}
+                aria-label="navigation tabs" className={classes.tabs}
             >
                 <Tab label="Series" />
                 <Tab label="People" />
