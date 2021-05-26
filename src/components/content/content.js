@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Itemlist from '../itemlist/itemlist';
 import Loading from '../loading/loading';
+import Error from '../error/error';
 
 import {connect} from 'react-redux';
 import {loadItems} from '../../redux/actions';
@@ -64,7 +65,8 @@ const Content = (props) => {
             <h1>Series list</h1><br/>
             {
                 appState.loading ? <Loading /> :
-                appState.cards.length > 0 ? <Itemlist series={appState.cards} /> : <div>No series found</div>
+                appState.error ? <Error /> :
+                appState.cards.length > 0 ? <Itemlist series={appState.cards} /> : <div>No series found</div> 
             }
             
         </main>
