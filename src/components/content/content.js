@@ -48,8 +48,6 @@ const Content = (props) => {
 
     return(
         <main>
-{/*             <Header  setFinalQuery={setFinalQuery}  />
-            <Navigation /> */}
             <h1>Series list</h1><br/>
             {
                 appState.loading ? <Loading /> :

@@ -4,7 +4,7 @@ import {Paper, Tabs, Tab } from '@material-ui/core';
 
 const Navigation = () => {
 
-    const [value, setValue] = React.useState(2);
+    const [value, setValue] = React.useState(0);
 
     const useStyles = makeStyles({
         root: {
