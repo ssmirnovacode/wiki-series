@@ -12,13 +12,13 @@ const getItems = async (url) => {
 
 const Content = (props) => {
 
-    const { /* page, */ items, query } = props;
+    const { /* page, */ items, query, loadItems } = props;
+    console.log(items);
 
     const [appState, setAppstate] = useState({
-        items: items,
+        cards: [],
         loading: false,
-        error: false,
-        noneFound: false
+        error: false
     });
 
 
@@ -27,7 +27,7 @@ const Content = (props) => {
             ...appState,
             loading: true
         }));
-        //console.log(query);
+ 
         getItems(`http://api.tvmaze.com/search/shows?q=${query}`) //url depends on page
         .then(res => {
              if (res.length > 0) {
@@ -35,19 +35,18 @@ const Content = (props) => {
                 setAppstate(appState => ({
                     ...appState,
                     loading: false,
-                    items: res
+                    cards: res
                 }));
                 
                 //console.log(res);
-                console.log(items);
+                //console.log(items);
                 console.log('items loaded');
              }
              else {
                 setAppstate(appState => ({
                     ...appState,
                     loading: false,
-                    noneFound: true,
-                    items: []
+                    cards: []
                 }));
                 loadItems([]);
              }      
@@ -57,7 +56,7 @@ const Content = (props) => {
             loading: false,
             error: true
         })));
-    }, [query]);
+    }, [query, loadItems ]);
 
 
     return(
@@ -65,7 +64,7 @@ const Content = (props) => {
             <h1>Series list</h1><br/>
             {
                 appState.loading ? <Loading /> :
-                !appState.noneFound ? <Itemlist series={appState.items} /> : <div>No series found</div>
+                appState.cards ? <Itemlist series={appState.cards} /> : <div>No series found</div>
             }
             
         </main>
@@ -77,5 +76,8 @@ const mapStateToProps = (state) => ({
     query: state.query
   });
 
+  const mapDispatchToProps = {
+    loadItems
+  };
   
-export default connect(mapStateToProps)(Content);
+export default connect(mapStateToProps, mapDispatchToProps)(Content);
