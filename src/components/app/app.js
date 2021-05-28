@@ -8,13 +8,11 @@ import Content from '../content/content';
 
 const App = () => {
 
-    //const [finalQuery, setFinalQuery] = useState('');
-
     return(
         <Router>
-            <Header  /* setFinalQuery={setFinalQuery}  */ />
+            <Header />
             <Navigation />
-            <Route path={'/'} component={() => <Content  /* finalQuery={finalQuery} */ />} />  {/* to be changed for SeriesPage  */}
+            <Route path={'/'} component={() => <Content page='shows' />} />  {/* to be changed for SeriesPage  */}
             
             
         </Router>

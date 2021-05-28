@@ -13,7 +13,7 @@ const getItems = async (url) => {
 
 const Content = (props) => {
 
-    const { /* page, */ items, query, loadItems } = props;
+    const { page, items, query, loadItems } = props;
     console.log(items);
 
     const [appState, setAppstate] = useState({
@@ -29,7 +29,7 @@ const Content = (props) => {
             loading: true
         }));
  
-        getItems(`http://api.tvmaze.com/search/shows?q=${query}`) //url depends on page
+        getItems(`http://api.tvmaze.com/search/${page}?q=${query}`) //url depends on page
         .then(res => {
              if (res.length > 0) {
                 loadItems(res);
@@ -57,7 +57,7 @@ const Content = (props) => {
             loading: false,
             error: true
         })));
-    }, [query, loadItems ]);
+    }, [query, loadItems, page ]);
 
 
     return(
