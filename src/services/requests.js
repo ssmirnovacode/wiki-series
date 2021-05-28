@@ -4,7 +4,7 @@ const getItems = async (url) => {
 }
 
 const getItemById = async (url, id) => {
-    const res = await fetch(url + id);
+    const res = await fetch(`${url}/${id}`);
     return await res.json();
 }
 

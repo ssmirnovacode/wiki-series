@@ -9,11 +9,12 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import StarsIcon from '@material-ui/icons/Star';
+import { Link } from 'react-router-dom';
 
 const ListItem = (props) => {
 
 
-    const {name, image} = props.page === 'shows' ? props.show : props.person;
+    const {id, name, image} = props.page === 'shows' ? props.show : props.person;
 
     const useStyles = makeStyles({
         root: {
@@ -23,7 +24,8 @@ const ListItem = (props) => {
         },
         media: {
           height: '20rem',
-          overflow: 'hidden'
+          overflow: 'hidden',
+          cursor: 'pointer'
         },
         descr: {
             overflow: "hidden",
@@ -47,12 +49,12 @@ const ListItem = (props) => {
     const classes = useStyles();
 
     return(
-        <Card className={classes.root}>
+        <Card className={classes.root} >
             <CardActionArea>
                 <CardMedia
                 className={classes.media}
                 image={image ? image.medium : 'https://www.allianceplast.com/wp-content/uploads/2017/11/no-image.png'}
-                title={name}
+                title={name} component={Link} to={`/${props.page}/${id}`}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">

@@ -14,10 +14,14 @@ const App = () => {
             <Navigation />
             <Route path={'/'} exact component={() => <Content page='shows' />} /> 
             <Route path={'/people'} component={() => <Content page='people' />} />
-            <Route path={'/networks'} component={() => <Content page='networks' />} /> {/* CORS issue */}
+            {/* <Route path={'/networks'} component={() => <Content page='networks' />} /> */} {/* CORS issue */}
             <Route path={`/shows/:id`} render={ ({match}) => {
                         const {id} = match.params;
-                        return <ItemDetails itemId={+id}/>
+                        return <ItemDetails page='shows' itemId={+id}/>
+                    }}/>
+            <Route path={`/people/:id`} render={ ({match}) => {
+                        const {id} = match.params;
+                        return <ItemDetails page='people' itemId={+id}/>
                     }}/>
         </Router>
     )
