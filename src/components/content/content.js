@@ -66,7 +66,7 @@ const Content = (props) => {
             {
                 appState.loading ? <Loading /> :
                 appState.error ? <Error /> :
-                appState.cards.length > 0 ? <Itemlist series={appState.cards} /> : <div>Nothing found</div> 
+                appState.cards.length > 0 ? <Itemlist page={page} items={appState.cards} /> : <div>Nothing found</div> 
             }
             
         </main>

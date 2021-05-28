@@ -15,16 +15,16 @@ const Itemlist = (props) => {
 
     const classes = useStyles();
 
-    const {series} = props;
+    const {items, page} = props;
 
     return(
         <section className={classes.root}>
                 {
-                    series.map(item => {
+                    items.map(item => {
                         const {id,...itemProps} = item;
-
+                        const itemKey = page === 'shows' ? item.show.id : item.person.id;
                         return(
-                            <ListItem key={item.show.id} {...itemProps} />
+                            <ListItem key={itemKey} {...itemProps} page={page} />
                         )
                     })
                 }

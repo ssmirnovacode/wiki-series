@@ -12,7 +12,17 @@ import StarsIcon from '@material-ui/icons/Star';
 
 const ListItem = (props) => {
 
-    const {id, name, language, genres, image, rating, summary} = props.show;
+
+    const {id, name, image} = props.page === 'shows' ? props.show : props.person;
+    /* try {
+        const {id, name, language, genres, image, rating=null, summary} = props.show;
+    }
+    catch(err){ console.log(err)};
+    
+    try {
+        const {id, name, image, country} = props.person;
+    }
+    catch(err){ console.log(err)}; */
 
     const useStyles = makeStyles({
         root: {
@@ -50,23 +60,36 @@ const ListItem = (props) => {
             <CardActionArea>
                 <CardMedia
                 className={classes.media}
-                image={image.medium}
+                image={image ? image.medium : null}
                 title={name}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
                         {name}  
                     </Typography>
-                    <Typography className={classes.rating} gutterBottom /* variant="h5"  */component="h4">
-                        <StarsIcon color="action" className={classes.icon} /> 
-                        <div>
+
+                    <Typography className={classes.rating} gutterBottom component="h4">
+                        
                         {
-                                rating.average ? rating.average : 'none'
+                            props.page === 'shows' ? 
+                            <>
+                            <StarsIcon color="action" className={classes.icon} /> 
+                            <div>
+                                {
+                                    props.show.rating.average ? props.show.rating.average : 'none'
+                                }
+                            </div></> : props.page === 'people' ?
+                            <div>
+                            {
+                                props.person.country ? props.person.country.name : 'none'
                             }
-                        </div>
+                        </div> : null
+                        }
+                        
                               
                     </Typography>
-                    <Typography className={classes.descr} variant="body2" color="textSecondary" component="p" dangerouslySetInnerHTML={{__html: summary}}/>
+                    <Typography className={classes.descr} variant="body2" color="textSecondary" component="p" 
+                        dangerouslySetInnerHTML={{__html: props.show ? props.show.summary : null}}/>
                 </CardContent>
             </CardActionArea>
             <CardActions>
