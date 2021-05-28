@@ -32,7 +32,7 @@ const Navigation = () => {
             >
                 <Tab label="Series" component={Link} to={'/'} />
                 <Tab label="People" component={Link} to={'/people'} />
-                <Tab label="Networks" component={Link} to={'/networks'} />
+                {/* <Tab label="Networks" component={Link} to={'/networks'} /> */}
             </Tabs>
         </Paper>
     )

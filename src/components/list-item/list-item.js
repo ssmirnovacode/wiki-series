@@ -13,16 +13,7 @@ import StarsIcon from '@material-ui/icons/Star';
 const ListItem = (props) => {
 
 
-    const {id, name, image} = props.page === 'shows' ? props.show : props.person;
-    /* try {
-        const {id, name, language, genres, image, rating=null, summary} = props.show;
-    }
-    catch(err){ console.log(err)};
-    
-    try {
-        const {id, name, image, country} = props.person;
-    }
-    catch(err){ console.log(err)}; */
+    const {name, image} = props.page === 'shows' ? props.show : props.person;
 
     const useStyles = makeStyles({
         root: {
@@ -60,7 +51,7 @@ const ListItem = (props) => {
             <CardActionArea>
                 <CardMedia
                 className={classes.media}
-                image={image ? image.medium : null}
+                image={image ? image.medium : 'https://www.allianceplast.com/wp-content/uploads/2017/11/no-image.png'}
                 title={name}
                 />
                 <CardContent>
@@ -81,7 +72,7 @@ const ListItem = (props) => {
                             </div></> : props.page === 'people' ?
                             <div>
                             {
-                                props.person.country ? props.person.country.name : 'none'
+                                props.person.country ? props.person.country.name : 'Country unknown'
                             }
                         </div> : null
                         }
