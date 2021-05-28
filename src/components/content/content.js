@@ -5,11 +5,7 @@ import Error from '../error/error';
 
 import {connect} from 'react-redux';
 import {loadItems} from '../../redux/actions';
-
-const getItems = async (url) => {
-    const res = await fetch(url);
-    return await res.json();
-}
+import {getItems} from '../../services/requests';
 
 const Content = (props) => {
 
