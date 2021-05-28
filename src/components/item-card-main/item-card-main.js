@@ -16,7 +16,7 @@ const ItemCardMain = (props) => {
     const useStyles = makeStyles({
         root: {
           margin: '1rem',
-          maxWidth: '60vw',
+          maxWidth: '60vw',   /* ---------- dont forget to delete it when other blocks enabled in ItemDetails------------- */
           backgroundColor: 'rgba(0,0,0, 0.5)',
           color: 'white'
         },
@@ -32,17 +32,22 @@ const ItemCardMain = (props) => {
         cardContent: {
             display: 'grid'
         },
+        title: {
+            gridColumn: '1/10'
+        },
         descr: {
             overflow: "hidden",
             textOverflow: "ellipsis",
             display: "-webkit-box",
-            "-webkit-line-clamp": 6,
+            "-webkit-line-clamp": 12,
             "-webkit-box-orient": "vertical",
-            color: 'white'
+            color: 'white',
+            gridColumn: '1/12'
         },
         rating: {    
             display: 'flex',
-            alignItems: 'center'
+            alignItems: 'center',
+            gridColumn: '11/12'
         },
         icon: {
             fontSize: '2rem',
@@ -58,7 +63,8 @@ const ItemCardMain = (props) => {
             padding: '0.3rem',
             border: '1px solid grey',
             borderRadius: '5px',
-            backgroundColor: 'grey'
+            backgroundColor: 'grey',
+            gridColumn: '1/12'
         }
       });
 
@@ -73,7 +79,7 @@ const ItemCardMain = (props) => {
                 title={name} 
                 />
                 <CardContent  className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
+                    <Typography gutterBottom variant="h5" component="h2" className={classes.title}>
                         {name}  
                     </Typography>
 
@@ -94,7 +100,7 @@ const ItemCardMain = (props) => {
                     </Typography>
                     <Typography className={classes.descr} variant="body2" color="textSecondary" component="p" 
                         dangerouslySetInnerHTML={{__html: summary ? summary : null}}/>
-                    <div className={classes.genres}>
+                    {/* <div className={classes.genres}>
                         {
                             genres.map( gen => {
                                 return(
@@ -102,7 +108,7 @@ const ItemCardMain = (props) => {
                                 )
                             })
                         }
-                    </div>
+                    </div> */}
                 </CardContent>
             </CardActionArea>
         </Card>
