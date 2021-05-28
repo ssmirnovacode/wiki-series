@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {Paper, Tabs, Tab } from '@material-ui/core';
+import {Link} from 'react-router-dom';
 
 const Navigation = () => {
 
@@ -29,9 +30,9 @@ const Navigation = () => {
                 onChange={handleChange}
                 aria-label="navigation tabs" className={classes.tabs}
             >
-                <Tab label="Series" />
-                <Tab label="People" />
-                <Tab label="Networks" />
+                <Tab label="Series" component={Link} to={'/'} />
+                <Tab label="People" component={Link} to={'/people'} />
+                <Tab label="Networks" component={Link} to={'/networks'} />
             </Tabs>
         </Paper>
     )

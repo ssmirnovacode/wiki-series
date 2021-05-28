@@ -12,8 +12,9 @@ const App = () => {
         <Router>
             <Header />
             <Navigation />
-            <Route path={'/'} component={() => <Content page='shows' />} />  {/* to be changed for SeriesPage  */}
-            
+            <Route path={'/'} exact component={() => <Content page='shows' />} /> 
+            <Route path={'/people'} component={() => <Content page='people' />} />
+            <Route path={'/networks'} component={() => <Content page='networks' />} /> {/* CORS issue */}
             
         </Router>
     )

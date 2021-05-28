@@ -24,12 +24,13 @@ const Content = (props) => {
 
 
     useEffect( () => {
-        setAppstate(appState => ({
+        let mounted = true;
+        mounted && setAppstate(appState => ({
             ...appState,
             loading: true
         }));
  
-        getItems(`http://api.tvmaze.com/search/${page}?q=${query}`) //url depends on page
+        mounted && getItems(`http://api.tvmaze.com/search/${page}?q=${query}`) //url depends on page
         .then(res => {
              if (res.length > 0) {
                 loadItems(res);
@@ -38,9 +39,7 @@ const Content = (props) => {
                     loading: false,
                     cards: res
                 }));
-                
-                //console.log(res);
-                //console.log(items);
+
                 console.log('items loaded');
              }
              else {
@@ -57,16 +56,17 @@ const Content = (props) => {
             loading: false,
             error: true
         })));
+        return () => mounted = false;
     }, [query, loadItems, page ]);
 
 
     return(
         <main>
-            <h1>Series list</h1><br/>
+            <h1>{page} list</h1><br/>
             {
                 appState.loading ? <Loading /> :
                 appState.error ? <Error /> :
-                appState.cards.length > 0 ? <Itemlist series={appState.cards} /> : <div>No series found</div> 
+                appState.cards.length > 0 ? <Itemlist series={appState.cards} /> : <div>Nothing found</div> 
             }
             
         </main>
