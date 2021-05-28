@@ -5,6 +5,7 @@ import { loadItems } from '../../redux/actions';
 import { getItemById } from '../../services/requests';
 
 import {connect} from 'react-redux';
+import ItemCardMain from '../item-card-main/item-card-main';
 
 const ItemDetails = (props) => {
 
@@ -32,7 +33,12 @@ const ItemDetails = (props) => {
     }, []);
 
     return(
+        <>
         <div>Item {props.itemId} page</div>
+        {
+            itemState.loading ? <Loading /> : itemState.error ? <Error /> : <ItemCardMain item={itemState.item} />
+        }
+        </>
     )
 }
 
