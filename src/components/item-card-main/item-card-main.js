@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -11,12 +11,12 @@ import StarsIcon from '@material-ui/icons/Star';
 
 const ItemCardMain = (props) => {
 
-    const {id, image, name, genres, status, premiered, rating, summary} = props.item;
+    const {/* id, */ image, name, /* genres, status, premiered, */ rating, summary} = props.item;
 
     const useStyles = makeStyles({
         root: {
           margin: '1rem',
-          maxWidth: '60vw',   /* ---------- dont forget to delete it when other blocks enabled in ItemDetails------------- */
+          //maxWidth: '50vw',   /* ---------- dont forget to delete it when other blocks enabled in ItemDetails------------- */
           backgroundColor: 'rgba(0,0,0, 0.5)',
           color: 'white'
         },

@@ -6,8 +6,23 @@ import { getItemById } from '../../services/requests';
 
 import {connect} from 'react-redux';
 import ItemCardMain from '../item-card-main/item-card-main';
+import ItemCardInfo from '../item-card-info/item-card-info';
+//import classes from '*.module.css';
+
+import { makeStyles } from '@material-ui/core/styles';
 
 const ItemDetails = (props) => {
+
+    const useStyles = makeStyles({
+        detailsContainer: {
+          display: 'grid',
+          gap: '1rem',
+          gridTemplateColumns: '8fr 3fr'
+        },
+        
+      });
+
+    const classes = useStyles();
 
     const [itemState, setItemstate] = useState({
         item: null,
@@ -34,9 +49,13 @@ const ItemDetails = (props) => {
 
     return(
         <>
-        <div>Item {props.itemId} page</div>
+        
         {
-            itemState.loading ? <Loading /> : itemState.error ? <Error /> : <ItemCardMain item={itemState.item} />
+            itemState.loading ? <Loading /> : itemState.error ? <Error /> : 
+                <div className={classes.detailsContainer}>
+                    <ItemCardMain item={itemState.item} />
+                    <ItemCardInfo item={itemState.item} />
+                </div>
         }
         </>
     )
