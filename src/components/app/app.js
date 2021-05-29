@@ -21,7 +21,7 @@ const App = () => {
                     }}/>
             <Route path={`/people/:id`} render={ ({match}) => {
                         const {id} = match.params;
-                        return <ItemDetails page='people' itemId={+id}/>
+                        return <div>Person id {id}</div> 
                     }}/>
         </Router>
     )

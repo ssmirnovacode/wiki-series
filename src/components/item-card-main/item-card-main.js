@@ -90,7 +90,7 @@ const ItemCardMain = (props) => {
                                 <StarsIcon color="action" className={classes.icon} /> 
                                 <div>
                                     {
-                                        rating.average ? rating.average : 'none'
+                                        rating ? rating.average : 'none'
                                     }
                                 </div>
                             </> 

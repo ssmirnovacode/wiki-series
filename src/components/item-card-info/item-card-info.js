@@ -47,7 +47,7 @@ const ItemCardInfo = (props) => {
         },
         {
             label: 'Schedule',
-            value: schedule.time + ' | ' + schedule.days.join(', ')
+            value: schedule && schedule.time + ' | ' + schedule.days.join(', ')
         },
         {
             label: 'Status',

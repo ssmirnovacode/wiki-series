@@ -22,7 +22,7 @@ const Itemlist = (props) => {
                 {
                     items.map(item => {
                         const {id,...itemProps} = item;
-                        const itemKey = page === 'shows' ? item.show.id : item.person.id;
+                        const itemKey = page === 'shows' ? item.show.id : page === 'people' ? item.person.id : Math.random();
                         return(
                             <ListItem key={itemKey} {...itemProps} page={page} />
                         )

@@ -3,8 +3,8 @@ const getItems = async (url) => {
     return await res.json();
 }
 
-const getItemById = async (url, id) => {
-    const res = await fetch(`${url}/${id}`);
+const getItemById = async (url) => {
+    const res = await fetch(url);
     return await res.json();
 }
 

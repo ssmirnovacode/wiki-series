@@ -10,6 +10,7 @@ import ItemCardInfo from '../item-card-info/item-card-info';
 //import classes from '*.module.css';
 
 import { makeStyles } from '@material-ui/core/styles';
+import ItemCardCast from '../item-card-cast/item-card-cast';
 
 const ItemDetails = (props) => {
 
@@ -30,9 +31,11 @@ const ItemDetails = (props) => {
         error: false
     });
 
+    const endpointUrl = props.page === 'shows' ? `http://api.tvmaze.com/shows/${props.itemId}?embed=cast` : `http://api.tvmaze.com/${props.page}/${props.itemId}`;
+
     useEffect( () => {
         let mounted = true;
-        mounted && getItemById(`http://api.tvmaze.com/${props.page}`, props.itemId)
+        mounted && getItemById(endpointUrl)
         .then(res => res && setItemstate({
             item: res,
             loading: false,
@@ -55,6 +58,7 @@ const ItemDetails = (props) => {
                 <div className={classes.detailsContainer}>
                     <ItemCardMain item={itemState.item} />
                     <ItemCardInfo item={itemState.item} />
+                    {/* <ItemCardCast url /> */}
                 </div>
         }
         </>
