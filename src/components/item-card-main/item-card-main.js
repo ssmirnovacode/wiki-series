@@ -18,7 +18,8 @@ const ItemCardMain = (props) => {
           margin: '1rem',
           //maxWidth: '50vw',   /* ---------- dont forget to delete it when other blocks enabled in ItemDetails------------- */
           backgroundColor: 'rgba(0,0,0, 0.5)',
-          color: 'white'
+          color: 'white',
+          gridColumn: '1/8',
         },
         actionArea: {
           display: 'grid',

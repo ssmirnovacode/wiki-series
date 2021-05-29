@@ -9,7 +9,8 @@ const ItemCardPreviousEpisodes = (prop) => {
             borderRadius: '5px',
             padding: '2rem 0',
             color: 'white',
-            marginRight: '1rem'
+            margin: '1rem',
+            gridColumn: '1/8',
         },
         
       });

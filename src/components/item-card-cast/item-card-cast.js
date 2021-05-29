@@ -10,7 +10,8 @@ const ItemCardCast = ({cast}) => {
             borderRadius: '5px',
             padding: '2rem 0',
             color: 'white',
-            marginLeft: '1rem'
+            margin: '1rem',
+            gridColumn: '1/8',
         },
         title: {
             fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",

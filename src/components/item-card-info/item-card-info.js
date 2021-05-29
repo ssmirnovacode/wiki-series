@@ -17,7 +17,8 @@ const ItemCardInfo = (props) => {
         root: {
           margin: '1rem',
           backgroundColor: 'rgba(0,0,0, 0.5)',
-          color: 'white'
+          color: 'white',
+          gridColumn: '8/12'
         },
         lines: {
             fontSize: '1rem'

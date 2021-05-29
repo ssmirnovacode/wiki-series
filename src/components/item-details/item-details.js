@@ -19,9 +19,8 @@ const ItemDetails = (props) => {
         detailsContainer: {
           display: 'grid',
           gap: '1rem',
-          gridTemplateColumns: '8fr 3fr'
-        },
-        
+          //gridTemplateColumns: '65% auto'
+        }
       });
 
     const classes = useStyles();
@@ -59,8 +58,9 @@ const ItemDetails = (props) => {
                 <div className={classes.detailsContainer}>
                     <ItemCardMain className={classes.main} item={itemState.item} />
                     <ItemCardInfo className={classes.info} item={itemState.item} />
-                    <ItemCardCast className={classes.cast} cast={itemState.item._embedded.cast} />
                     <ItemCardPreviousEpisodes className={classes.episodes}  />
+                    <ItemCardCast className={classes.cast} cast={itemState.item._embedded.cast} />
+                    
                 </div>
         }
         </>
