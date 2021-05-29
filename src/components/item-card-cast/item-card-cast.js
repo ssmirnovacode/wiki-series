@@ -14,8 +14,11 @@ const ItemCardCast = ({cast}) => {
             margin: '1rem',
             gridColumn: '1/8',
             [theme.breakpoints.down('sm')] : {
+                gridColumn: '1/7'
+            },
+            [theme.breakpoints.down('xs')] : {
                 gridColumn: '1/12'
-              }
+            }
         },
         title: {
             fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
