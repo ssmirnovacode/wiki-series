@@ -56,9 +56,9 @@ const ItemDetails = (props) => {
         {
             itemState.loading ? <Loading /> : itemState.error ? <Error /> : 
                 <div className={classes.detailsContainer}>
-                    <ItemCardMain item={itemState.item} />
-                    <ItemCardInfo item={itemState.item} />
-                    <ItemCardCast cast={itemState.item._embedded.cast} />
+                    <ItemCardMain className={classes.main} item={itemState.item} />
+                    <ItemCardInfo className={classes.info} item={itemState.item} />
+                    <ItemCardCast className={classes.cast} cast={itemState.item._embedded.cast} />
                 </div>
         }
         </>

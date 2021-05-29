@@ -83,6 +83,11 @@ const ListItem = (props) => {
                     </Typography>
                     <Typography className={classes.descr} variant="body2" color="textSecondary" component="p" 
                         dangerouslySetInnerHTML={{__html: props.show ? props.show.summary : null}}/>
+                    <Typography className={classes.descr} variant="body2" color="textSecondary" component="p">
+                        {
+                            props.character ? `as ${props.character.name}` : null
+                        }
+                    </Typography>
                 </CardContent>
             </CardActionArea>
             <CardActions>
