@@ -3,16 +3,19 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-//import StarsIcon from '@material-ui/icons/Star';
+import au from '../../assets/img/au.png';
+import be from '../../assets/img/be.png';
+import es from '../../assets/img/es.png';
+import gb from '../../assets/img/gb.png';
+import us from '../../assets/img/us.png';
 
 const ItemCardInfo = (props) => {
 
-    const {id, image, name, genres, status, premiered, rating, network, language, schedule, runtime} = props.item;
+    const {id, /* image, */ name, genres, status, premiered, /* rating, */ network, language, schedule, runtime} = props.item;
 
     const useStyles = makeStyles({
         root: {
           margin: '1rem',
-          //maxWidth: '30vw',   /* ---------- dont forget to delete it when other blocks enabled in ItemDetails------------- */
           backgroundColor: 'rgba(0,0,0, 0.5)',
           color: 'white'
         },
@@ -25,6 +28,9 @@ const ItemCardInfo = (props) => {
         },
         title: {
             color: 'white'
+        },
+        flag: {
+            height: '1rem'
         }
       });
 
@@ -59,12 +65,38 @@ const ItemCardInfo = (props) => {
             label: 'Episode duration',
             value: runtime || 'unknown'
         }
-    ]
+    ];
+
+    const getCountryCode = (network) => {
+        switch (network.country.code) {
+            case 'AU': {
+                return au;
+            }
+            case 'BE': {
+                return be;
+            }
+            case 'ES': {
+                return es;
+            }
+            case 'GB': {
+                return gb;
+            }
+            case 'US': {
+                return us;
+            }
+            default: {
+                return null
+            }
+        }
+    }
+
     return(
         <Card className={classes.root}>
             <CardContent>
                 <Typography gutterBottom variant="h5" component="h2" className={classes.title} color="textSecondary">
-                    {name}
+                    {name} {
+                        network && <img src={getCountryCode(network)} alt='country' className={classes.flag} />
+                    }
                 </Typography>
                 {
                     lines.map(line => {
