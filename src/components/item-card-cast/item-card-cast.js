@@ -13,7 +13,7 @@ const ItemCardCast = ({cast}) => {
             marginLeft: '1rem'
         },
         title: {
-            //textAlign: 'center',
+            fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
             fontWeight: 'normal',
             marginLeft: '3rem'
         }

@@ -18,7 +18,7 @@ const ListItem = (props) => {
 
     const useStyles = makeStyles({
         root: {
-          maxWidth: '18rem',
+          width: '15rem',
           backgroundColor: 'rgba(0,0,0, 0.5)',
           color: 'white'
         },
@@ -54,7 +54,7 @@ const ListItem = (props) => {
                 <CardMedia
                 className={classes.media}
                 image={image ? image.medium : 'https://www.allianceplast.com/wp-content/uploads/2017/11/no-image.png'}
-                title={name} component={Link} to={`/${props.page}/${id}`}
+                title={name} component={Link} to={`/${props.page === 'cast' ? 'people' : props.page}/${id}`}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
