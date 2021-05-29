@@ -30,7 +30,8 @@ const Navigation = () => {
                 onChange={handleChange}
                 aria-label="navigation tabs" className={classes.tabs}
             >
-                <Tab label="Series" component={Link} to={'/'} />
+                <Tab label="Home" component={Link} to={'/'} />
+                <Tab label="Shows" component={Link} to={'/shows'} />
                 <Tab label="People" component={Link} to={'/people'} />
                 {/* <Tab label="Networks" component={Link} to={'/networks'} /> */}
             </Tabs>
