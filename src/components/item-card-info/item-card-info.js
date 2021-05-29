@@ -20,7 +20,8 @@ const ItemCardInfo = (props) => {
             fontSize: '1rem'
         },
         label: {
-            fontWeight: 'bold'
+            fontWeight: 'bold',
+            lineHeight: '2rem'
         },
         title: {
             color: 'white'
@@ -32,31 +33,31 @@ const ItemCardInfo = (props) => {
     const lines = [
         {
             label: 'Network',
-            value: network.name
+            value: network ? network.name : 'unknown'
         },
         {
             label: 'Language',
-            value: language
+            value: language || 'unknown'
         },
         {
             label: 'Schedule',
-            value: schedule.time + '' + schedule.days[0]
+            value: schedule.time + ' | ' + schedule.days.join(', ')
         },
         {
             label: 'Status',
-            value: status
+            value: status || 'unknown'
         },
         {
             label: 'Premiered',
-            value: premiered
+            value: premiered || 'unknown'
         },
         {
             label: 'Genres',
-            value: 'genres | genres | genres' /* it is an Array, handle apart */
+            value: genres.join(' | ') || 'unknown'
         },
         {
             label: 'Episode duration',
-            value: runtime
+            value: runtime || 'unknown'
         }
     ]
     return(
