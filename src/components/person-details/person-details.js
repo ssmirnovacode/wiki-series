@@ -21,22 +21,27 @@ const PersonDetails = (props) => {
 
     const [itemState, setItemstate] = useState({
         item: null,
+        castcredits: null,
         loading: true,
         error: false
     });
 
-    const endpointUrl = `http://api.tvmaze.com/${props.page}/${props.itemId}`;
+    console.log(itemState.castcredits);
+
+    const endpointUrl = `http://api.tvmaze.com/${props.page}/${props.itemId}?embed=castcredits`;
 
     useEffect( () => {
         let mounted = true;
         mounted && getItemById(endpointUrl)
         .then(res => res && setItemstate({
             item: res,
+            castcredits: res._embedded.castcredits,
             loading: false,
             error: false
         }))
         .catch(() => setItemstate({
             item: null,
+            castcredits: null,
             loading: false,
             error: true
         }));
