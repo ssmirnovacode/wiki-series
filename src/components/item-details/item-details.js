@@ -58,7 +58,7 @@ const ItemDetails = (props) => {
                 <div className={classes.detailsContainer}>
                     <ItemCardMain className={classes.main} item={itemState.item} />
                     <ItemCardInfo className={classes.info} item={itemState.item} />
-                    <ItemCardPreviousEpisodes className={classes.episodes}  />
+                    <ItemCardPreviousEpisodes className={classes.episodes} episodes={itemState.item._embedded.episodes} />
                     <ItemCardCast className={classes.cast} cast={itemState.item._embedded.cast} />
                     
                 </div>
