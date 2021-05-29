@@ -48,7 +48,7 @@ const ItemDetails = (props) => {
         }));
         console.log(itemState.item);
         return () => mounted = false;
-    }, []);
+    }, [endpointUrl]);
 
     return(
         <>

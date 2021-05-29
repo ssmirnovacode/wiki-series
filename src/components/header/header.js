@@ -11,6 +11,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import {Link} from 'react-router-dom';
 
 import {connect} from 'react-redux';
 import {setQuery} from '../../redux/actions';
@@ -30,6 +31,8 @@ const useStyles = makeStyles((theme) => ({
       [theme.breakpoints.up('sm')]: {
         display: 'block',
       },
+      textDecoration: 'none',
+      color: 'white'
     },
     search: {
       position: 'relative',
@@ -174,7 +177,7 @@ const Header = (props) =>  {
           >
             <MenuIcon />
           </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
+          <Typography className={classes.title} variant="h6" noWrap component={Link} to={'/'} >
             WIKI-series
           </Typography>
           <div className={classes.search}>
