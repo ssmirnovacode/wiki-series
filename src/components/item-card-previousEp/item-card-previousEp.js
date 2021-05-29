@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -10,6 +10,8 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 
 const ItemCardPreviousEpisodes = ({episodes}) => {
+
+    const [episodesShown, setEpisodesShown] = useState(4);
 
     const useStyles = makeStyles(theme => ({
         container: {
@@ -60,7 +62,9 @@ const ItemCardPreviousEpisodes = ({episodes}) => {
         },
       }))(TableRow);
 
-      const episodesToRender = episodes.slice(-4).reverse();
+      const episodesToRender = episodes.slice(-episodesShown).reverse();
+
+      const showMoreEpisodes = () => episodesShown <= episodes.length && setEpisodesShown(episodesShown => episodesShown + 10);
 
     return(
         <section className={classes.container}>
@@ -89,7 +93,11 @@ const ItemCardPreviousEpisodes = ({episodes}) => {
                     </TableBody>
                 </Table>
             </TableContainer>
-            <Button className={classes.btn} variant="contained">View all</Button>
+            {
+                episodesShown < episodes.length ?  <Button className={classes.btn} variant="contained" onClick={showMoreEpisodes}>View more</Button> : 
+                <Button className={classes.btn} variant="contained" onClick={() => setEpisodesShown(4)}>View less</Button>
+            }
+           
         </section>
     )
 }
