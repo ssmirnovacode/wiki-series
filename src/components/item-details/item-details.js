@@ -58,7 +58,7 @@ const ItemDetails = (props) => {
                 <div className={classes.detailsContainer}>
                     <ItemCardMain item={itemState.item} />
                     <ItemCardInfo item={itemState.item} />
-                    {/* <ItemCardCast url /> */}
+                    <ItemCardCast cast={itemState.item._embedded.cast} />
                 </div>
         }
         </>
