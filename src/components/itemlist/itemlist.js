@@ -2,7 +2,7 @@ import React from 'react';
 import ListItem from '../list-item/list-item';
 import { makeStyles } from '@material-ui/core/styles';
 
-const Itemlist = ({items, page, roles=null}) => {
+const Itemlist = ({items, page}) => {
 
     const useStyles = makeStyles({
         root: {
@@ -13,11 +13,7 @@ const Itemlist = ({items, page, roles=null}) => {
         }
       });
 
-    //console.log(roles); // ok
-
     const classes = useStyles();
-
-    //const {items, page} = props;
 
     const itemsToRender = page === 'cast' && items.length > 9 ? items.slice(0, 10) : items;
 
@@ -27,9 +23,7 @@ const Itemlist = ({items, page, roles=null}) => {
                     itemsToRender.map(item => {
                         const {id,...itemProps} = item;
                         const itemKey = page === 'shows' ? item.show.id : page === 'people' ? item.person.id : Math.random();
-                        const itemIndex = itemsToRender.indexOf(item);
-                        const char = roles ? roles.filter((role, i) => i === itemIndex)[0] : null;
-                        console.log(char); //undefined
+                        const char = page === 'cast' ? item.character : null;
                         return(
                             <ListItem key={itemKey} {...itemProps} page={page} character={char} />
                         )

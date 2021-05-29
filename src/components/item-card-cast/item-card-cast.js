@@ -1,7 +1,6 @@
 import React from 'react';
 import ItemList from '../itemlist/itemlist';
 import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 
 const ItemCardCast = ({cast}) => {
 
@@ -25,16 +24,12 @@ const ItemCardCast = ({cast}) => {
     const actors = cast.map(role => role.person);
     const characters = cast.map(role => role.character);
 
-    actors.forEach((actor, i) => actor.character = characters[i])
-    //actors.map((actor, i) => actor.character = characters[i])
-
-    console.log(actors);
-    //console.log(characters);
+    actors.forEach((actor, i) => actor.character = characters[i]);
 
     return(
         <section className={classes.container}>
             <h2 className={classes.title}>CAST: </h2><hr/>
-            <ItemList items={actors} roles={characters} page={'cast'} />
+            <ItemList items={actors} page={'cast'} />
         </section>
         
     )
