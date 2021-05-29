@@ -1,10 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import Loading from '../loading/loading';
 import Error from '../error/error';
-import { loadItems } from '../../redux/actions';
 import { getItemById } from '../../services/requests';
 
-import {connect} from 'react-redux';
 import ItemCardMain from '../item-card-main/item-card-main';
 import ItemCardInfo from '../item-card-info/item-card-info';
 //import classes from '*.module.css';
@@ -27,7 +25,7 @@ const PersonDetails = (props) => {
         error: false
     });
 
-    const endpointUrl = props.page === 'shows' ? `http://api.tvmaze.com/shows/${props.itemId}?embed[]=cast&embed[]=episodes` : `http://api.tvmaze.com/${props.page}/${props.itemId}`;
+    const endpointUrl = `http://api.tvmaze.com/${props.page}/${props.itemId}`;
 
     useEffect( () => {
         let mounted = true;
@@ -47,7 +45,20 @@ const PersonDetails = (props) => {
     }, [endpointUrl]);
 
     return(
-        <div>Person</div>
+        <>
+        
+        {
+            itemState.loading ? <Loading /> : itemState.error ? <Error /> : 
+                <div className={classes.detailsContainer}>
+                    <ItemCardMain className={classes.main} item={itemState.item} />
+                    {/* <ItemCardInfo className={classes.info} item={itemState.item} />
+                    <ItemCardPreviousEpisodes className={classes.episodes} episodes={itemState.item._embedded.episodes} />
+                    <ItemCardCast className={classes.cast} cast={itemState.item._embedded.cast} /> */}
+                    
+                </div>
+        }
+        </>
     )
 }
 
+export default PersonDetails;
