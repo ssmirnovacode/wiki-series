@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const ItemCardPreviousEpisodes = (prop) => {
 
-    const useStyles = makeStyles({
+    const useStyles = makeStyles(theme => ({
         container: {
             backgroundColor: 'rgba(0,0,0, 0.5)',
             borderRadius: '5px',
@@ -11,9 +11,12 @@ const ItemCardPreviousEpisodes = (prop) => {
             color: 'white',
             margin: '1rem',
             gridColumn: '1/8',
+            [theme.breakpoints.down('sm')]  : {
+                gridColumn: '1/12'
+              }
         },
         
-      });
+      }));
 
     const classes = useStyles();
 

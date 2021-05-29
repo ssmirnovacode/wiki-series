@@ -18,7 +18,7 @@ const ItemDetails = (props) => {
     const useStyles = makeStyles({
         detailsContainer: {
           display: 'grid',
-          gap: '1rem',
+          //gap: '1rem',
           //gridTemplateColumns: '65% auto'
         }
       });

@@ -8,18 +8,24 @@ import CardMedia from '@material-ui/core/CardMedia';
 //import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import StarsIcon from '@material-ui/icons/Star';
+//import theme from '../../theme';
 
 const ItemCardMain = (props) => {
 
     const {/* id, */ image, name, /* genres, status, premiered, */ rating, summary} = props.item;
 
-    const useStyles = makeStyles({
+    const useStyles = makeStyles(theme => ({
         root: {
           margin: '1rem',
-          //maxWidth: '50vw',   /* ---------- dont forget to delete it when other blocks enabled in ItemDetails------------- */
           backgroundColor: 'rgba(0,0,0, 0.5)',
           color: 'white',
           gridColumn: '1/8',
+          [theme.breakpoints.down('sm')] : {
+            gridColumn: '1/7'
+          },
+          [theme.breakpoints.down('xs')] : {
+            gridColumn: '1/12'
+          }
         },
         actionArea: {
           display: 'grid',
@@ -67,7 +73,7 @@ const ItemCardMain = (props) => {
             backgroundColor: 'grey',
             gridColumn: '1/12'
         }
-      });
+      }));
 
     const classes = useStyles();
 

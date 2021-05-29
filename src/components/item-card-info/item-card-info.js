@@ -8,17 +8,24 @@ import be from '../../assets/img/be.png';
 import es from '../../assets/img/es.png';
 import gb from '../../assets/img/gb.png';
 import us from '../../assets/img/us.png';
+//import theme from '../../theme';
 
 const ItemCardInfo = (props) => {
 
     const {id, /* image, */ name, genres, status, premiered, /* rating, */ network, language, schedule, runtime} = props.item;
 
-    const useStyles = makeStyles({
+    const useStyles = makeStyles(theme => ({
         root: {
           margin: '1rem',
           backgroundColor: 'rgba(0,0,0, 0.5)',
           color: 'white',
-          gridColumn: '8/12'
+          gridColumn: '8/12',
+          [theme.breakpoints.down('sm')] : {
+            gridColumn: '7/12'
+          },
+          [theme.breakpoints.down('xs')] : {
+            gridColumn: '1/12'
+          }
         },
         lines: {
             fontSize: '1rem'
@@ -33,7 +40,7 @@ const ItemCardInfo = (props) => {
         flag: {
             height: '1rem'
         }
-      });
+      }));
 
     const classes = useStyles();
 
