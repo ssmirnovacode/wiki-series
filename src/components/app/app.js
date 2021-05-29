@@ -4,7 +4,7 @@ import Header from '../header/header';
 import Navigation from '../navigation/navigation';
 import {BrowserRouter as Router, Route } from 'react-router-dom';
 import Content from '../content/content';
-import ItemDetails from '../item-details/item-details';
+import ShowDetails from '../show-details/show-details';
 
 const App = () => {
 
@@ -17,7 +17,7 @@ const App = () => {
             {/* <Route path={'/networks'} component={() => <Content page='networks' />} /> */} {/* CORS issue */}
             <Route path={`/shows/:id`} render={ ({match}) => {
                         const {id} = match.params;
-                        return <ItemDetails page='shows' itemId={+id}/>
+                        return <ShowDetails page='shows' itemId={+id}/>
                     }}/>
             <Route path={`/people/:id`} render={ ({match}) => {
                         const {id} = match.params;
