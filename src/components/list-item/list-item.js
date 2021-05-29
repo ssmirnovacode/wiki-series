@@ -16,6 +16,7 @@ const ListItem = (props) => {
 
     const {id, name, image} = props.page === 'shows' ? props.show : props.page === 'people' ? props.person : props;
 
+    //console.log(id);
     const useStyles = makeStyles({
         root: {
           width: '15rem',

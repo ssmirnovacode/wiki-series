@@ -4,6 +4,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const Itemlist = ({items, page}) => {
 
+    console.log(items);
+
     const useStyles = makeStyles({
         root: {
             display: 'flex',
@@ -25,7 +27,7 @@ const Itemlist = ({items, page}) => {
                         const itemKey = page === 'shows' ? item.show.id : page === 'people' ? item.person.id : Math.random();
                         const char = page === 'cast' ? item.character : null;
                         return(
-                            <ListItem key={itemKey} {...itemProps} page={page} character={char} />
+                            <ListItem key={itemKey} {...itemProps} id={id} page={page} character={char} />
                         )
                     })
                 }
