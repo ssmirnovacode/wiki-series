@@ -10,7 +10,7 @@ import {getCountryCode} from '../../assets/functions/functions';
 
 const ItemCardMain = (props) => {
 
-    const { image, name, rating, summary, country, birthday, gender, _embedded} = props.item;
+    const { image, name, rating, summary, country, birthday, gender} = props.item;
 
     const useStyles = makeStyles(theme => ({
         root: {

@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const Itemlist = ({items, page}) => {
 
-    console.log(items);
+    //console.log(items);
 
     const useStyles = makeStyles({
         root: {

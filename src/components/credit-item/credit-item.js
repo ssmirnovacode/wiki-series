@@ -15,8 +15,6 @@ import { Link } from 'react-router-dom';
 
 const CreditItem = (props) => {
 
-    //console.log(props.href);
-
     const [itemState, setItemState] = useState({
         item: null,
         error: false,
@@ -36,9 +34,8 @@ const CreditItem = (props) => {
             error: true,
             loading: false
         }));
-        //console.log(itemState.item);
         return () => mounted = false;
-    }, [/* props.href */])
+    }, [props.href])
 
     const useStyles = makeStyles({
         root: {
@@ -94,7 +91,7 @@ const CreditItem = (props) => {
                     </Typography>
 
                     {
-                        itemState.type === 'show' ? 
+                        itemState.page === 'shows' ? 
                         <Typography className={classes.rating} gutterBottom component="h4">
                             <StarsIcon color="action" className={classes.icon} /> 
                             <div>

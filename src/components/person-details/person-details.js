@@ -84,7 +84,7 @@ const PersonDetails = (props) => {
                             {
                                 itemState.castcredits.map( item => {
                                     return(
-                                            <CreditItem type='show' key={item} href={item} />
+                                            <CreditItem page='shows' key={item+Math.random()} href={item} />
                                     )
                                 }) 
                             }
@@ -97,7 +97,7 @@ const PersonDetails = (props) => {
                             {
                                 itemState.characters.map( item => {
                                     return(
-                                            <CreditItem type='char' key={item} href={item} />
+                                            <CreditItem page='characters' key={item+'char'} href={item} />
                                     )
                                 }) 
                             }

@@ -9,8 +9,8 @@ import {getItems} from '../../services/requests';
 
 const Content = (props) => {
 
-    const { page, items, query, loadItems, home } = props;
-    console.log(items);
+    const { page, query, loadItems, home } = props;
+    //console.log(items);
 
     const [appState, setAppstate] = useState({
         cards: [],
@@ -25,8 +25,6 @@ const Content = (props) => {
             ...appState,
             loading: true
         }));
- 
-        
         mounted && getItems(`http://api.tvmaze.com/search/${page}?q=${query}`) //url depends on page
         .then(res => {
             if (res.length > 0) {
@@ -54,7 +52,7 @@ const Content = (props) => {
             error: true
         })));
         return () => mounted = false;
-    }, [query, loadItems, page ]);
+    }, [query, loadItems, page, home ]);
 
 
     return(

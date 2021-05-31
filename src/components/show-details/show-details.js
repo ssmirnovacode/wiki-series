@@ -41,7 +41,6 @@ const ShowDetails = (props) => {
             loading: false,
             error: true
         }));
-        console.log(itemState.item);
         return () => mounted = false;
     }, [endpointUrl]);
 

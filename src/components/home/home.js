@@ -1,18 +1,16 @@
-import React, {useState, useEffect} from 'react';
-import Itemlist from '../itemlist/itemlist';
-import Loading from '../loading/loading';
-import Error from '../error/error';
-
+import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import {setQuery} from '../../redux/actions';
-import {getItems} from '../../services/requests';
 import Content from '../content/content';
 
 const Home = (props) => {
 
+  const {setQuery} = props;
+
     useEffect( () => {
-        props.setQuery('black');
-    }, [])
+        setQuery('black');
+        console.log('Initial query set');
+    }, [setQuery])
 
     return(
         <section>
