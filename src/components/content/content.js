@@ -9,7 +9,7 @@ import {getItems} from '../../services/requests';
 
 const Content = (props) => {
 
-    const { page, items, query, loadItems } = props;
+    const { page, items, query, loadItems, home } = props;
     console.log(items);
 
     const [appState, setAppstate] = useState({
@@ -26,26 +26,27 @@ const Content = (props) => {
             loading: true
         }));
  
+        
         mounted && getItems(`http://api.tvmaze.com/search/${page}?q=${query}`) //url depends on page
         .then(res => {
-             if (res.length > 0) {
+            if (res.length > 0) {
                 loadItems(res);
                 setAppstate(appState => ({
                     ...appState,
                     loading: false,
-                    cards: res
+                    cards: home ? res.slice(0,5) : res
                 }));
 
                 console.log('items loaded');
-             }
-             else {
+            }
+            else {
                 setAppstate(appState => ({
                     ...appState,
                     loading: false,
                     cards: []
                 }));
                 loadItems([]);
-             }      
+            }      
         })
         .catch(() => setAppstate(appState => ({
             ...appState,
