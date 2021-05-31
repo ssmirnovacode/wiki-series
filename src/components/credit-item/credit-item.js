@@ -15,7 +15,7 @@ import { Link } from 'react-router-dom';
 
 const CreditItem = (props) => {
 
-    console.log(props.href);
+    //console.log(props.href);
 
     const [itemState, setItemState] = useState({
         item: null,
@@ -93,17 +93,21 @@ const CreditItem = (props) => {
                         {itemState.item.name}  
                     </Typography>
 
-                    <Typography className={classes.rating} gutterBottom component="h4">
+                    {
+                        itemState.type === 'show' ? 
+                        <Typography className={classes.rating} gutterBottom component="h4">
                             <StarsIcon color="action" className={classes.icon} /> 
                             <div>
                                 {
                                     itemState.item.rating ? itemState.item.rating.average : 'none'
                                 }
                             </div>
-                              
-                    </Typography>
+                                
+                        </Typography> : null
+                    }
+                        
                     <Typography className={classes.descr} variant="body2" color="textSecondary" component="p" 
-                        dangerouslySetInnerHTML={{__html: itemState.item ? itemState.item.summary : null}}/>
+                        dangerouslySetInnerHTML={{__html: itemState.item.summary ? itemState.item.summary : null}}/>
                 </CardContent>
             </CardActionArea>
             <CardActions>

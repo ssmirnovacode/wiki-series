@@ -41,7 +41,8 @@ const PersonDetails = (props) => {
 
     const [itemState, setItemstate] = useState({
         item: null,
-        castcredits: null,
+        castcredits: [],
+        characters: [],
         loading: true,
         error: false
     });
@@ -56,12 +57,14 @@ const PersonDetails = (props) => {
         .then(res => res && setItemstate({
             item: res,
             castcredits: res._embedded.castcredits.map(item => item._links.show.href),
+            characters: res._embedded.castcredits.map(item => item._links.character.href),
             loading: false,
             error: false,
         }))
         .catch(() => setItemstate({
             item: null,
-            castcredits: null,
+            castcredits: [],
+            characters: [],
             loading: false,
             error: true
         }));
@@ -81,13 +84,25 @@ const PersonDetails = (props) => {
                             {
                                 itemState.castcredits.map( item => {
                                     return(
-                                            <CreditItem key={item} href={item} />
+                                            <CreditItem type='show' key={item} href={item} />
                                     )
                                 }) 
                             }
                         </div>
                     </div>
                     
+                    <div  className={classes.container}>
+                        <h2 className={classes.title}>Best roles: </h2><br/>
+                        <div className={classes.items}>
+                            {
+                                itemState.characters.map( item => {
+                                    return(
+                                            <CreditItem type='char' key={item} href={item} />
+                                    )
+                                }) 
+                            }
+                        </div>
+                    </div>
                     
                     {/* <ItemCardInfo className={classes.info} item={itemState.item} />
                     <ItemCardPreviousEpisodes className={classes.episodes} episodes={itemState.item._embedded.episodes} />
