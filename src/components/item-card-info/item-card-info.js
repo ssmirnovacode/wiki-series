@@ -3,12 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import au from '../../assets/img/au.png';
-import be from '../../assets/img/be.png';
-import es from '../../assets/img/es.png';
-import gb from '../../assets/img/gb.png';
-import us from '../../assets/img/us.png';
-//import theme from '../../theme';
+
+import {getCountryCode} from '../../assets/functions/functions';
 
 const ItemCardInfo = (props) => {
 
@@ -75,35 +71,12 @@ const ItemCardInfo = (props) => {
         }
     ];
 
-    const getCountryCode = (network) => {
-        switch (network.country.code) {
-            case 'AU': {
-                return au;
-            }
-            case 'BE': {
-                return be;
-            }
-            case 'ES': {
-                return es;
-            }
-            case 'GB': {
-                return gb;
-            }
-            case 'US': {
-                return us;
-            }
-            default: {
-                return null
-            }
-        }
-    }
-
     return(
         <Card className={classes.root}>
             <CardContent>
                 <Typography gutterBottom variant="h5" component="h2" className={classes.title} color="textSecondary">
                     {name} {
-                        network && <img src={getCountryCode(network)} alt='country' className={classes.flag} />
+                        network && <img src={getCountryCode(network.country.code)} alt='country' className={classes.flag} />
                     }
                 </Typography>
                 {

@@ -6,10 +6,11 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import StarsIcon from '@material-ui/icons/Star';
+import {getCountryCode} from '../../assets/functions/functions';
 
 const ItemCardMain = (props) => {
 
-    const {/* id, */ image, name, /* genres, status, premiered, */ rating, summary} = props.item;
+    const { image, name, rating, summary, country, birthday, gender, _embedded} = props.item;
 
     const useStyles = makeStyles(theme => ({
         root: {
@@ -87,32 +88,41 @@ const ItemCardMain = (props) => {
                         {name}  
                     </Typography>
 
-                    <Typography className={classes.rating} gutterBottom component="h4">
-                        
-                        {
-                            <>
-                                <StarsIcon color="action" className={classes.icon} /> 
-                                <div>
-                                    {
-                                        rating ? rating.average : 'none'
-                                    }
-                                </div>
-                            </> 
-                        }
-                        
-                              
-                    </Typography>
-                    <Typography className={classes.descr} variant="body2" color="textSecondary" component="p" 
-                        dangerouslySetInnerHTML={{__html: summary ? summary : null}}/>
-                    {/* <div className={classes.genres}>
-                        {
-                            genres.map( gen => {
-                                return(
-                                    <span className={classes.genre} key={id + gen}>{gen} </span>
-                                )
-                            })
-                        }
-                    </div> */}
+                    {
+                        props.page === 'shows' ?
+                        <>
+                        <Typography className={classes.rating} gutterBottom component="h4">
+                            {
+                                <><StarsIcon color="action" className={classes.icon} /> 
+                                    <div>
+                                        {
+                                            rating ? rating.average : 'none'
+                                        }
+                                    </div></> 
+                            }    
+                        </Typography>
+                        <Typography className={classes.descr} variant="body2" color="textSecondary" component="p" 
+                            dangerouslySetInnerHTML={{__html: summary ? summary : null}}/>
+                        </> :
+                        <>
+                        <Typography className={classes.descr}  variant="body2" component="p">
+                            {
+                                country && <img src={getCountryCode(country.code)} alt='country' className={classes.flag} />
+                            }
+                            {country && country.name}
+                        </Typography>
+                        <Typography className={classes.descr}  variant="body2" component="p">
+                            Birthday: {birthday? birthday : 'unknown'}
+                        </Typography>
+                        <Typography className={classes.descr}  variant="body2" component="p">
+                            Gender: {gender? gender : 'unknown'}
+                        </Typography>
+                        <Typography className={classes.descr}  variant="body2" component="p">
+                            Shows: 
+                        </Typography>
+                        </>
+                    }
+
                 </CardContent>
             </CardActionArea>
         </Card>

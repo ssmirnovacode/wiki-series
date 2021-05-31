@@ -4,18 +4,38 @@ import Error from '../error/error';
 import { getItemById } from '../../services/requests';
 
 import ItemCardMain from '../item-card-main/item-card-main';
-import ItemCardInfo from '../item-card-info/item-card-info';
+//import ItemCardInfo from '../item-card-info/item-card-info';
 //import classes from '*.module.css';
 
 import { makeStyles } from '@material-ui/core/styles';
+import CreditItem from '../credit-item/credit-item';
+//import Itemlist from '../itemlist/itemlist';
 
 const PersonDetails = (props) => {
 
-    const useStyles = makeStyles({
+    const useStyles = makeStyles(theme => ({
         detailsContainer: {
           display: 'grid',
+        },
+        container: {
+            backgroundColor: 'rgba(0,0,0, 0.5)',
+            borderRadius: '5px',
+            padding: '2rem 0',
+            color: 'white',
+            margin: '1rem',      
+        },
+        items: {
+            display: 'flex',
+            gap: '1rem',
+            flexWrap: 'wrap',
+            alignContent: 'center'
+        },
+        title: {
+            fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
+            fontWeight: 'normal',
+            marginLeft: '3rem'
         }
-      });
+      }));
 
     const classes = useStyles();
 
@@ -26,7 +46,7 @@ const PersonDetails = (props) => {
         error: false
     });
 
-    console.log(itemState.castcredits);
+    //const [showsParticipated, setShowsParticipated] = useState([]);
 
     const endpointUrl = `http://api.tvmaze.com/${props.page}/${props.itemId}?embed=castcredits`;
 
@@ -35,9 +55,9 @@ const PersonDetails = (props) => {
         mounted && getItemById(endpointUrl)
         .then(res => res && setItemstate({
             item: res,
-            castcredits: res._embedded.castcredits,
+            castcredits: res._embedded.castcredits.map(item => item._links.show.href),
             loading: false,
-            error: false
+            error: false,
         }))
         .catch(() => setItemstate({
             item: null,
@@ -45,7 +65,6 @@ const PersonDetails = (props) => {
             loading: false,
             error: true
         }));
-        console.log(itemState.item);
         return () => mounted = false;
     }, [endpointUrl]);
 
@@ -56,6 +75,20 @@ const PersonDetails = (props) => {
             itemState.loading ? <Loading /> : itemState.error ? <Error /> : 
                 <div className={classes.detailsContainer}>
                     <ItemCardMain className={classes.main} item={itemState.item} />
+                    <div  className={classes.container}>
+                        <h2 className={classes.title}>Known for: </h2><br/>
+                        <div className={classes.items}>
+                            {
+                                itemState.castcredits.map( item => {
+                                    return(
+                                            <CreditItem key={item} href={item} />
+                                    )
+                                }) 
+                            }
+                        </div>
+                    </div>
+                    
+                    
                     {/* <ItemCardInfo className={classes.info} item={itemState.item} />
                     <ItemCardPreviousEpisodes className={classes.episodes} episodes={itemState.item._embedded.episodes} />
                     <ItemCardCast className={classes.cast} cast={itemState.item._embedded.cast} /> */}
