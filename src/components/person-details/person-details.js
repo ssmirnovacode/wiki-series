@@ -49,15 +49,16 @@ const PersonDetails = (props) => {
 
     //const [showsParticipated, setShowsParticipated] = useState([]);
 
-    const endpointUrl = `http://api.tvmaze.com/${props.page}/${props.itemId}?embed=castcredits`;
+    const endpointUrl = props.page === 'people' ? `http://api.tvmaze.com/${props.page}/${props.itemId}?embed=castcredits` :
+            `http://api.tvmaze.com/${props.page}/${props.itemId}`;             
 
     useEffect( () => {
         let mounted = true;
         mounted && getItemById(endpointUrl)
         .then(res => res && setItemstate({
             item: res,
-            castcredits: res._embedded.castcredits.map(item => item._links.show.href),
-            characters: res._embedded.castcredits.map(item => item._links.character.href),
+            castcredits: props.page === 'people'&& res._embedded.castcredits.map(item => item._links.show.href),
+            characters: props.page === 'people'&& res._embedded.castcredits.map(item => item._links.character.href),
             loading: false,
             error: false,
         }))
@@ -69,7 +70,7 @@ const PersonDetails = (props) => {
             error: true
         }));
         return () => mounted = false;
-    }, [endpointUrl]);
+    }, [endpointUrl, props.page]);
 
     return(
         <>
@@ -78,7 +79,9 @@ const PersonDetails = (props) => {
             itemState.loading ? <Loading /> : itemState.error ? <Error /> : 
                 <div className={classes.detailsContainer}>
                     <ItemCardMain className={classes.main} item={itemState.item} />
-                    <div  className={classes.container}>
+                    {
+                        props.page === 'people'&& <>
+                        <div  className={classes.container}>
                         <h2 className={classes.title}>Known for: </h2><br/>
                         <div className={classes.items}>
                             {
@@ -102,7 +105,9 @@ const PersonDetails = (props) => {
                                 }) 
                             }
                         </div>
-                    </div>
+                    </div></>
+                    }
+                    
                     
                     {/* <ItemCardInfo className={classes.info} item={itemState.item} />
                     <ItemCardPreviousEpisodes className={classes.episodes} episodes={itemState.item._embedded.episodes} />

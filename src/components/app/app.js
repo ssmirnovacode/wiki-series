@@ -26,6 +26,10 @@ const App = () => {
                         const {id} = match.params;
                         return <PersonDetails page='people' itemId={+id}/> 
                     }}/>
+            <Route path={`/characters/:id`} render={ ({match}) => {
+                        const {id} = match.params;
+                        return <PersonDetails page='characters' itemId={+id}/> 
+                    }}/>
         </Router>
     )
 };
