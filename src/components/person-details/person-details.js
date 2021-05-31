@@ -4,12 +4,9 @@ import Error from '../error/error';
 import { getItemById } from '../../services/requests';
 
 import ItemCardMain from '../item-card-main/item-card-main';
-//import ItemCardInfo from '../item-card-info/item-card-info';
-//import classes from '*.module.css';
 
 import { makeStyles } from '@material-ui/core/styles';
 import CreditItem from '../credit-item/credit-item';
-//import Itemlist from '../itemlist/itemlist';
 
 const PersonDetails = (props) => {
 

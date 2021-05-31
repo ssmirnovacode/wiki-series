@@ -13,7 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import StarsIcon from '@material-ui/icons/Star';
 import { Link } from 'react-router-dom';
 
-const CreditItem = (props) => {
+const CreditItem = (props) => { //pass person id and retrieve data from /castcredits?embed=show endpoint
 
     const [itemState, setItemState] = useState({
         item: null,
