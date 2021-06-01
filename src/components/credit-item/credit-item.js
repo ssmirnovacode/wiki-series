@@ -21,12 +21,9 @@ const CreditItem = (props) => {
         loading: true
     });
 
-    //console.log(props.personName);
-
     const endpointUrl = props.page === 'characters' ? props.href :
             `${props.href}?embed=cast`; 
 
-    //console.log(itemState.item._embedded.cast.find(el => el.person.name === props.personName));
 
     useEffect( () => {
         let mounted = true;
@@ -84,15 +81,13 @@ const CreditItem = (props) => {
         return <Error />
     }
 
-    //console.log(itemState.item._embedded.cast);
-
     return(
         <Card className={classes.root} >
             <CardActionArea>
                 <CardMedia
                 className={classes.media}
                 image={itemState.item.image ? itemState.item.image.medium : 'https://www.allianceplast.com/wp-content/uploads/2017/11/no-image.png'}
-                title={itemState.item.name} component={Link} to={`/${props.page === 'cast' ? 'people' : props.page}/${itemState.item.id}`}
+                title={itemState.item.name} component={props.page === 'shows' ? Link : CardMedia} to={`/${props.page === 'cast' ? 'people' : props.page}/${itemState.item.id}`}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
@@ -100,7 +95,8 @@ const CreditItem = (props) => {
                     </Typography>
 
                     {
-                        itemState.page === 'shows' ? 
+                        props.page === 'shows' &&
+                        <>
                         <Typography className={classes.rating} gutterBottom component="h4">
                             <StarsIcon color="action" className={classes.icon} /> 
                             <div>
@@ -109,7 +105,7 @@ const CreditItem = (props) => {
                                 }
                             </div>
                                 
-                        </Typography> : 
+                        </Typography>  
                         <Typography className={classes.rating} gutterBottom component="h4">
                         
                             <div>
@@ -117,6 +113,8 @@ const CreditItem = (props) => {
                             </div>
                             
                         </Typography> 
+                        </> 
+                        
                     }
                         
                     <Typography className={classes.descr} variant="body2" color="textSecondary" component="p" 
