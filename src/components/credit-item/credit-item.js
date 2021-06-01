@@ -13,7 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import StarsIcon from '@material-ui/icons/Star';
 import { Link } from 'react-router-dom';
 
-const CreditItem = (props) => { //pass person id and retrieve data from /castcredits?embed=show endpoint
+const CreditItem = (props) => { 
 
     const [itemState, setItemState] = useState({
         item: null,
@@ -21,9 +21,16 @@ const CreditItem = (props) => { //pass person id and retrieve data from /castcre
         loading: true
     });
 
+    //console.log(props.personName);
+
+    const endpointUrl = props.page === 'characters' ? props.href :
+            `${props.href}?embed=cast`; 
+
+    //console.log(itemState.item._embedded.cast.find(el => el.person.name === props.personName));
+
     useEffect( () => {
         let mounted = true;
-        mounted && getItemById(props.href)
+        mounted && getItemById(endpointUrl)
         .then(res => res && setItemState({
             item: res,
             error: false,
@@ -35,7 +42,7 @@ const CreditItem = (props) => { //pass person id and retrieve data from /castcre
             loading: false
         }));
         return () => mounted = false;
-    }, [props.href])
+    }, [endpointUrl])
 
     const useStyles = makeStyles({
         root: {
@@ -77,6 +84,8 @@ const CreditItem = (props) => { //pass person id and retrieve data from /castcre
         return <Error />
     }
 
+    //console.log(itemState.item._embedded.cast);
+
     return(
         <Card className={classes.root} >
             <CardActionArea>
@@ -100,7 +109,14 @@ const CreditItem = (props) => { //pass person id and retrieve data from /castcre
                                 }
                             </div>
                                 
-                        </Typography> : null
+                        </Typography> : 
+                        <Typography className={classes.rating} gutterBottom component="h4">
+                        
+                            <div>
+                                as {itemState.item && itemState.item._embedded && itemState.item._embedded.cast.find(el => el.person.name === props.personName).character.name}
+                            </div>
+                            
+                        </Typography> 
                     }
                         
                     <Typography className={classes.descr} variant="body2" color="textSecondary" component="p" 

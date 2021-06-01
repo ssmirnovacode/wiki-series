@@ -44,8 +44,6 @@ const PersonDetails = (props) => {
         error: false
     });
 
-    //const [showsParticipated, setShowsParticipated] = useState([]);
-
     const endpointUrl = props.page === 'people' ? `http://api.tvmaze.com/${props.page}/${props.itemId}?embed=castcredits` :
             `http://api.tvmaze.com/${props.page}/${props.itemId}`;             
 
@@ -82,9 +80,9 @@ const PersonDetails = (props) => {
                         <h2 className={classes.title}>Known for: </h2><br/>
                         <div className={classes.items}>
                             {
-                                itemState.castcredits.map( item => {
+                                itemState.castcredits.map( (item, i) => {
                                     return(
-                                            <CreditItem page='shows' key={item+Math.random()} href={item} />
+                                        <CreditItem page='shows' index={i} personName={itemState.item.name} key={item+Math.random()} href={item} />
                                     )
                                 }) 
                             }
@@ -95,9 +93,9 @@ const PersonDetails = (props) => {
                         <h2 className={classes.title}>Best roles: </h2><br/>
                         <div className={classes.items}>
                             {
-                                itemState.characters.map( item => {
+                                itemState.characters.map((item, i) => {
                                     return(
-                                            <CreditItem page='characters' key={item+'char'} href={item} />
+                                            <CreditItem page='characters' personName={itemState.item.name} index={i}  key={item+'char'} href={item} />
                                     )
                                 }) 
                             }
