@@ -4,12 +4,27 @@ const useStyles = makeStyles(theme => ({
     detailsContainer: {
       display: 'grid',
     },
-    container: {
+    shows: {
         backgroundColor: 'rgba(0,0,0, 0.5)',
         borderRadius: '5px',
         padding: '2rem 0',
         color: 'white',
-        margin: '1rem'     
+        margin: '1rem' ,
+        gridColumn: '1/6',
+        [theme.breakpoints.down('xs')] : {
+            gridColumn: '1/12'
+        }    
+    },
+    chars: {
+        backgroundColor: 'rgba(0,0,0, 0.5)',
+        borderRadius: '5px',
+        padding: '2rem 0',
+        color: 'white',
+        margin: '1rem' ,
+        gridColumn: '6/12',
+        [theme.breakpoints.down('xs')] : {
+            gridColumn: '1/12'
+        }    
     },
     items: {
         display: 'flex',

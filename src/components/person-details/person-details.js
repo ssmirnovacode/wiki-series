@@ -49,7 +49,7 @@ const PersonDetails = (props) => {
                     <ItemCardMain className={classes.main} item={itemState.item} />
                     {
                         props.page === 'people'&& <>
-                        <div  className={classes.container}>
+                        <div className={classes.shows}>
                             <h2 className={classes.title}>Known for: </h2><br/>
                             <div className={classes.items}>
                                 {
@@ -62,7 +62,7 @@ const PersonDetails = (props) => {
                             </div>
                         </div>
                         
-                        <div  className={classes.container}>
+                        <div className={classes.chars}>
                             <h2 className={classes.title}>Best roles: </h2><br/>
                             <div className={classes.items}>
                                 {

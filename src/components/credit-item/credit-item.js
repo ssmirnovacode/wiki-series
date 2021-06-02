@@ -43,7 +43,7 @@ const CreditItem = (props) => {
 
     const useStyles = makeStyles({
         root: {
-          width: '15rem',
+          width: '18rem',
           backgroundColor: 'rgba(0,0,0, 0.5)',
           color: 'white'
         },
@@ -56,7 +56,7 @@ const CreditItem = (props) => {
             overflow: "hidden",
             textOverflow: "ellipsis",
             display: "-webkit-box",
-            "-webkit-line-clamp": 5,
+            "-webkit-line-clamp": 3,
             "-webkit-box-orient": "vertical",
             color: 'white'
         },
