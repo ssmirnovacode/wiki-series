@@ -26,7 +26,7 @@ const ShowDetails = (props) => {
         error: false
     });
 
-    const endpointUrl = props.page === 'shows' ? `http://api.tvmaze.com/shows/${props.itemId}?embed[]=cast&embed[]=episodes` : `http://api.tvmaze.com/${props.page}/${props.itemId}`;
+    const endpointUrl = props.page === 'shows' ? `https://cors-anywhere.herokuapp.com/http://api.tvmaze.com/shows/${props.itemId}?embed[]=cast&embed[]=episodes` : `https://cors-anywhere.herokuapp.com/http://api.tvmaze.com/${props.page}/${props.itemId}`;
 
     useEffect( () => {
         let mounted = true;

@@ -18,8 +18,8 @@ const PersonDetails = (props) => {
         error: false
     });
 
-    const endpointUrl = props.page === 'people' ? `http://api.tvmaze.com/${props.page}/${props.itemId}?embed=castcredits` :
-            `http://api.tvmaze.com/${props.page}/${props.itemId}`;             
+    const endpointUrl = props.page === 'people' ? `https://cors-anywhere.herokuapp.com/http://api.tvmaze.com/${props.page}/${props.itemId}?embed=castcredits` :
+            `https://cors-anywhere.herokuapp.com/http://api.tvmaze.com/${props.page}/${props.itemId}`;             
 
     useEffect( () => {
         let mounted = true;

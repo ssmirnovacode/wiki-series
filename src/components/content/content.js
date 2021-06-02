@@ -39,14 +39,13 @@ const Content = (props) => {
         error: false
     });
 
-
     useEffect( () => {
         let mounted = true;
         mounted && setAppstate(appState => ({
             ...appState,
             loading: true
         }));
-        mounted && getItems(`http://api.tvmaze.com/search/${page}?q=${query}`) //url depends on page
+        mounted && getItems(`https://cors-anywhere.herokuapp.com/http://api.tvmaze.com/search/${page}?q=${query}`) //url depends on page
         .then(res => {
             if (res.length > 0) {
                 loadItems(res);
