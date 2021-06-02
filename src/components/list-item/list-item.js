@@ -16,7 +16,6 @@ const ListItem = (props) => {
 
     const {id, name, image} = props.page === 'shows' ? props.show : props.page === 'people' ? props.person : props;
 
-    //console.log(id);
     const useStyles = makeStyles({
         root: {
           width: '15rem',
@@ -95,12 +94,10 @@ const ListItem = (props) => {
                 </CardContent>
             </CardActionArea>
             <CardActions>
-{/*                 <Button size="small" color="primary">
-                Share
-                </Button> */} 
                 <Button variant="outlined" size="small" className={classes.btn} component={Link} to={`/${props.page === 'cast' ? 'people' : props.page}/${id}`}>
-                Learn More
+                        Learn More
                 </Button>
+
             </CardActions>
             </Card>
     )

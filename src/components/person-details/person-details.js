@@ -101,7 +101,7 @@ const PersonDetails = (props) => {
                                 }) 
                             }
                         </div>
-                    </div></>
+                    </div>     </>
                     }
                     
                     

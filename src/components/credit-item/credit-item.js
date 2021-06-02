@@ -50,7 +50,7 @@ const CreditItem = (props) => {
         media: {
           height: '20rem',
           overflow: 'hidden',
-          cursor: 'pointer'
+          cursor: props.page === 'characters' && 'auto'
         },
         descr: {
             overflow: "hidden",
@@ -83,11 +83,11 @@ const CreditItem = (props) => {
 
     return(
         <Card className={classes.root} >
-            <CardActionArea>
+            <CardActionArea disableRipple={props.page === 'characters' ? true : false} component={props.page === 'shows' ? Link : CardMedia} to={`/${props.page === 'cast' ? 'people' : props.page}/${itemState.item.id}`}>
                 <CardMedia
                 className={classes.media}
                 image={itemState.item.image ? itemState.item.image.medium : 'https://www.allianceplast.com/wp-content/uploads/2017/11/no-image.png'}
-                title={itemState.item.name} component={props.page === 'shows' ? Link : CardMedia} to={`/${props.page === 'cast' ? 'people' : props.page}/${itemState.item.id}`}
+                title={itemState.item.name}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
@@ -122,9 +122,13 @@ const CreditItem = (props) => {
                 </CardContent>
             </CardActionArea>
             <CardActions>
-                <Button size="small" color="primary">
-                Learn More
-                </Button>
+                {
+                    props.page !== 'characters' && 
+                        <Button size="small" color="primary">
+                            Learn More
+                        </Button>
+                }
+                
             </CardActions>
         </Card>
     )

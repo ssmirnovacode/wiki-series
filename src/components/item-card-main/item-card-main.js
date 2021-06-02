@@ -77,7 +77,7 @@ const ItemCardMain = (props) => {
 
     return(
         <Card className={classes.root} >
-            <CardActionArea className={classes.actionArea}>
+            <CardActionArea disableRipple className={classes.actionArea}>
                 <CardMedia
                 className={classes.media}
                 image={image ? image.medium : 'https://www.allianceplast.com/wp-content/uploads/2017/11/no-image.png'}
