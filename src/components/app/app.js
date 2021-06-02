@@ -1,6 +1,7 @@
 import React from 'react';
 import './app.scss';
 import Header from '../header/header';
+import Footer from '../footer/footer';
 import Navigation from '../navigation/navigation';
 import {BrowserRouter as Router, Route } from 'react-router-dom';
 import Content from '../content/content';
@@ -30,6 +31,7 @@ const App = () => {
                         const {id} = match.params;
                         return <PersonDetails page='characters' itemId={+id}/> 
                     }}/>
+            <Footer />
         </Router>
     )
 };
