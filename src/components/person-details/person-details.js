@@ -1,39 +1,12 @@
 import React, {useState, useEffect} from 'react';
+import useStyles from './styles';
 import Loading from '../loading/loading';
 import Error from '../error/error';
 import { getItemById } from '../../services/requests';
-
 import ItemCardMain from '../item-card-main/item-card-main';
-
-import { makeStyles } from '@material-ui/core/styles';
 import CreditItem from '../credit-item/credit-item';
 
 const PersonDetails = (props) => {
-
-    const useStyles = makeStyles(theme => ({
-        detailsContainer: {
-          display: 'grid',
-        },
-        container: {
-            backgroundColor: 'rgba(0,0,0, 0.5)',
-            borderRadius: '5px',
-            padding: '2rem 0',
-            color: 'white',
-            margin: '1rem'     
-        },
-        items: {
-            display: 'flex',
-            gap: '1rem',
-            flexWrap: 'wrap',
-            alignContent: 'center',
-            justifyContent: 'center'
-        },
-        title: {
-            fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
-            fontWeight: 'normal',
-            marginLeft: '3rem'
-        }
-      }));
 
     const classes = useStyles();
 
@@ -70,7 +43,6 @@ const PersonDetails = (props) => {
 
     return(
         <>
-        
         {
             itemState.loading ? <Loading /> : itemState.error ? <Error /> : 
                 <div className={classes.detailsContainer}>

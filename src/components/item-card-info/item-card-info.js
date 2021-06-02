@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import useStyles from './styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
@@ -9,34 +9,6 @@ import {getCountryCode} from '../../assets/functions/functions';
 const ItemCardInfo = (props) => {
 
     const {id, /* image, */ name, genres, status, premiered, /* rating, */ network, language, schedule, runtime} = props.item;
-
-    const useStyles = makeStyles(theme => ({
-        root: {
-          margin: '1rem',
-          backgroundColor: 'rgba(0,0,0, 0.5)',
-          color: 'white',
-          gridColumn: '8/12',
-          [theme.breakpoints.down('sm')] : {
-            gridColumn: '7/12'
-          },
-          [theme.breakpoints.down('xs')] : {
-            gridColumn: '1/12'
-          }
-        },
-        lines: {
-            fontSize: '1rem'
-        },
-        label: {
-            fontWeight: 'bold',
-            lineHeight: '2rem'
-        },
-        title: {
-            color: 'white'
-        },
-        flag: {
-            height: '1rem'
-        }
-      }));
 
     const classes = useStyles();
 
