@@ -10,7 +10,7 @@ import {getCountryCode} from '../../assets/functions/functions';
 
 const ItemCardMain = (props) => {
 
-    const { image, name, rating, summary, country, birthday, gender} = props.item;
+    const { image, name, rating, summary, country, birthday, gender, deathday} = props.item;
 
     const useStyles = makeStyles(theme => ({
         root: {
@@ -47,7 +47,8 @@ const ItemCardMain = (props) => {
             "-webkit-line-clamp": 12,
             "-webkit-box-orient": "vertical",
             color: 'white',
-            gridColumn: '1/12'
+            gridColumn: '1/12',
+            lineHeight: gender && '2rem'
         },
         rating: {    
             display: 'flex',
@@ -70,6 +71,9 @@ const ItemCardMain = (props) => {
             borderRadius: '5px',
             backgroundColor: 'grey',
             gridColumn: '1/12'
+        },
+        label: {
+            fontWeight: 'bold'
         }
       }));
 
@@ -109,16 +113,24 @@ const ItemCardMain = (props) => {
                             {
                                 country && <img src={getCountryCode(country.code)} alt='country' className={classes.flag} />
                             }
-                            {country && country.name}
+                             {country && country.name}
                         </Typography>
                         <Typography className={classes.descr}  variant="body2" component="p">
-                            Birthday: {birthday? birthday : 'unknown'}
+                            <span className={classes.label}>Born: </span>{birthday? birthday : 'unknown'}
                         </Typography>
+                        {       
+                            deathday && 
+                            <Typography className={classes.descr}  variant="body2" component="p">
+                                <span className={classes.label}>Died: </span>{deathday}
+                            </Typography>
+                        }
+                        
                         <Typography className={classes.descr}  variant="body2" component="p">
-                            Gender: {gender? gender : 'unknown'}
+                            <span className={classes.label}>Gender: </span>{gender? gender : 'unknown'}
                         </Typography>
-                        <Typography className={classes.descr}  variant="body2" component="p">
-                            Shows: 
+
+                        <Typography className={classes.descrText}  variant="body2" component="p">
+                            <span className={classes.label}>Biography: </span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eleifend augue velit, quis interdum est iaculis eget. Sed sit amet venenatis nisl. Mauris dictum bibendum mollis. Nullam semper nunc eu rhoncus congue. Nullam arcu tellus, tristique ac dui a, laoreet viverra risus. Mauris nec tincidunt justo, sed consequat nibh. Mauris ullamcorper ex ut massa faucibus, eget rhoncus est vulputate. Quisque velit nunc, faucibus non orci nec, molestie rutrum eros. Nunc justo justo, consectetur a lorem a, venenatis feugiat odio. Etiam accumsan urna nec commodo dictum. 
                         </Typography>
                         </>
                     }
