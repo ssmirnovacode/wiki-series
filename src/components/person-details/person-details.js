@@ -19,13 +19,14 @@ const PersonDetails = (props) => {
             borderRadius: '5px',
             padding: '2rem 0',
             color: 'white',
-            margin: '1rem',      
+            margin: '1rem'     
         },
         items: {
             display: 'flex',
             gap: '1rem',
             flexWrap: 'wrap',
-            alignContent: 'center'
+            alignContent: 'center',
+            justifyContent: 'center'
         },
         title: {
             fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",

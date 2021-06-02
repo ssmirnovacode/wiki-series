@@ -44,6 +44,9 @@ const ListItem = (props) => {
             fontSize: '2rem',
             marginRight: '.7rem',
             color: 'orange'
+        },
+        btn: {
+            color: 'white'
         }
       });
 
@@ -51,11 +54,11 @@ const ListItem = (props) => {
 
     return(
         <Card className={classes.root} >
-            <CardActionArea>
+            <CardActionArea component={Link} to={`/${props.page === 'cast' ? 'people' : props.page}/${id}`}>
                 <CardMedia
                 className={classes.media}
                 image={image ? image.medium : 'https://www.allianceplast.com/wp-content/uploads/2017/11/no-image.png'}
-                title={name} component={Link} to={`/${props.page === 'cast' ? 'people' : props.page}/${id}`}
+                title={name}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
@@ -95,7 +98,7 @@ const ListItem = (props) => {
 {/*                 <Button size="small" color="primary">
                 Share
                 </Button> */} 
-                <Button size="small" color="primary">
+                <Button variant="outlined" size="small" className={classes.btn} component={Link} to={`/${props.page === 'cast' ? 'people' : props.page}/${id}`}>
                 Learn More
                 </Button>
             </CardActions>
