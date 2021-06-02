@@ -168,14 +168,14 @@ const Header = (props) =>  {
     <div className={classes.grow}>
       <AppBar className={classes.appbar} position="static">
         <Toolbar>
-          <IconButton
+          {/* <IconButton
             edge="start"
             className={classes.menuButton}
             color="inherit"
             aria-label="open drawer"
           >
             <MenuIcon />
-          </IconButton>
+          </IconButton> */}
           <Typography className={classes.title} variant="h6" noWrap component={Link} to={'/'} >
             WIKI-series
           </Typography>
@@ -196,7 +196,7 @@ const Header = (props) =>  {
               </form>
           </div>
           <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>
+          {/* <div className={classes.sectionDesktop}>
 
             <IconButton
               edge="end"
@@ -219,7 +219,7 @@ const Header = (props) =>  {
             >
               <MoreIcon />
             </IconButton>
-          </div>
+          </div> */}
         </Toolbar>
       </AppBar>
       {renderMobileMenu}
