@@ -2,12 +2,33 @@ import React, {useState, useEffect} from 'react';
 import Itemlist from '../itemlist/itemlist';
 import Loading from '../loading/loading';
 import Error from '../error/error';
-
+import nothing from '../../assets/img/nothing.jpg';
 import {connect} from 'react-redux';
 import {loadItems} from '../../redux/actions';
 import {getItems} from '../../services/requests';
+import { makeStyles } from '@material-ui/core/styles';
 
 const Content = (props) => {
+
+    const useStyles = makeStyles({
+        container: {
+            padding: '2rem'
+        },
+        imgBox: {
+            display: 'flex',
+            alignContent: 'center',
+            justifyContent: 'center',
+        },
+        img: {
+            maxWidth: '20rem'
+        },
+        title: {
+            color: 'white',
+            textAlign: 'center'
+        }
+      });
+
+    const classes = useStyles();
 
     const { page, query, loadItems, home } = props;
     //console.log(items);
@@ -56,12 +77,18 @@ const Content = (props) => {
 
 
     return(
-        <main>
-            <h1>{page} list</h1><br/>
+        <main className={classes.container}>
+            {/* <h1>{page} list</h1><br/> */}
             {
                 appState.loading ? <Loading /> :
                 appState.error ? <Error /> :
-                appState.cards.length > 0 ? <Itemlist page={page} items={appState.cards} /> : <div>Nothing found</div> 
+                appState.cards.length > 0 ? <Itemlist page={page} items={appState.cards} /> : 
+                <>
+                <h2 className={classes.title}>Nothing was found for your query...</h2>
+                <div className={classes.imgBox}>
+                    <img className={classes.img} src={nothing} alt="Nothing found" /> 
+                </div>
+                </>
             }
             
         </main>
