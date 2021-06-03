@@ -47,9 +47,12 @@ const CreditItem = (props) => {
 
     const useStyles = makeStyles(theme => ({
         root: {
-          width: '18rem',
+          width: '15rem',
           backgroundColor: 'rgba(0,0,0, 0.5)',
-          color: 'white'
+          color: 'white',
+          [theme.breakpoints.down('xs')] : {
+            width: '10rem'
+          },
         },
         title: {
           [theme.breakpoints.down('xs')] : {

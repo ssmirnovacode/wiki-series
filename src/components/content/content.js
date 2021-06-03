@@ -6,30 +6,9 @@ import nothing from '../../assets/img/nothing.jpg';
 import {connect} from 'react-redux';
 import {loadItems} from '../../redux/actions';
 import {getItems} from '../../services/requests';
-import { makeStyles } from '@material-ui/core/styles';
+import useStyles from './styles';
 
 const Content = (props) => {
-
-    const useStyles = makeStyles(theme => ({
-        container: {
-            padding: '2rem',
-            [theme.breakpoints.down('xs')] : {
-                padding: '1rem'
-              },
-        },
-        imgBox: {
-            display: 'flex',
-            alignContent: 'center',
-            justifyContent: 'center',
-        },
-        img: {
-            maxWidth: '20rem'
-        },
-        title: {
-            color: 'white',
-            textAlign: 'center'
-        }
-      }));
 
     const classes = useStyles();
 
@@ -80,7 +59,7 @@ const Content = (props) => {
 
     return(
         <main className={classes.container}>
-            {/* <h1>{page} list</h1><br/> */}
+
             {
                 appState.loading ? <Loading /> :
                 appState.error ? <Error /> :
