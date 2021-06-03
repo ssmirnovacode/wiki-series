@@ -15,7 +15,13 @@ const useStyles = makeStyles(theme => ({
         },
         actionArea: {
           display: 'grid',
-          gridTemplateColumns: '1fr 3fr'
+          gridTemplateColumns: '1fr 3fr',
+          [theme.breakpoints.down('sm')] : {
+            gridTemplateColumns: '2fr 4fr'
+          },
+          [theme.breakpoints.down('xs')] : {
+            gridTemplateColumns: '2fr 3fr'
+          }
         },
         media: {
           height: '20rem',
