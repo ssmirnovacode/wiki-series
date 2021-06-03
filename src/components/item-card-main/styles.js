@@ -32,7 +32,10 @@ const useStyles = makeStyles(theme => ({
             display: 'grid'
         },
         title: {
-            gridColumn: '1/10'
+            gridColumn: '1/10',
+            [theme.breakpoints.down('xs')] : {
+              fontSize: '1.2rem'
+            }
         },
         descr: {
             overflow: "hidden",
@@ -40,9 +43,17 @@ const useStyles = makeStyles(theme => ({
             display: "-webkit-box",
             "-webkit-line-clamp": 12,
             "-webkit-box-orient": "vertical",
+         /*    [theme.breakpoints.down('sm')] : {
+              display: "-webkit-box",
+            "-webkit-line-clamp": 8,
+            "-webkit-box-orient": "vertical"
+            }, */
             color: 'white',
             gridColumn: '1/12',
-            lineHeight: '1.2rem'
+            lineHeight: '1.2rem',
+            [theme.breakpoints.down('xs')] : {
+              fontSize: '.8rem'
+            }
         },
         rating: {    
             display: 'flex',
@@ -52,7 +63,10 @@ const useStyles = makeStyles(theme => ({
         icon: {
             fontSize: '2rem',
             marginRight: '.7rem',
-            color: 'orange'
+            color: 'orange',
+            [theme.breakpoints.down('xs')] : {
+              fontSize: '1.2rem'
+            }
         },
         genres: {
             display: 'flex',

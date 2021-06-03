@@ -10,9 +10,12 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const Content = (props) => {
 
-    const useStyles = makeStyles({
+    const useStyles = makeStyles(theme => ({
         container: {
-            padding: '2rem'
+            padding: '2rem',
+            [theme.breakpoints.down('xs')] : {
+                padding: '1rem'
+              },
         },
         imgBox: {
             display: 'flex',
@@ -26,7 +29,7 @@ const Content = (props) => {
             color: 'white',
             textAlign: 'center'
         }
-      });
+      }));
 
     const classes = useStyles();
 

@@ -65,7 +65,7 @@ const ItemCardMain = (props) => {
                         </Typography>
 
                         <Typography className={classes.descr}  variant="body2" component="p">
-                            <span className={classes.label}>Biography: </span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eleifend augue velit, quis interdum est iaculis eget. Sed sit amet venenatis nisl. Mauris dictum bibendum mollis. Nullam semper nunc eu rhoncus congue. Nullam arcu tellus, tristique ac dui a, laoreet viverra risus. Mauris nec tincidunt justo, sed consequat nibh. Mauris ullamcorper ex ut massa faucibus, eget rhoncus est vulputate. Quisque velit nunc, faucibus non orci nec, molestie rutrum eros. Nunc justo justo, consectetur a lorem a, venenatis feugiat odio. Etiam accumsan urna nec commodo dictum. 
+                            <span className={classes.label}>Biography: </span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eleifend augue velit, quis interdum est iaculis eget. Sed sit amet venenatis nisl. Mauris dictum bibendum mollis. Nullam semper nunc eu rhoncus congue. Nullam arcu tellus, tristique ac dui a, laoreet viverra risus. 
                         </Typography>
                         </>
                     }

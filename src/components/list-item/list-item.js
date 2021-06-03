@@ -26,7 +26,7 @@ const ListItem = (props) => {
                 title={name}
                 />
                 <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
+                    <Typography className={classes.title} gutterBottom variant="h5" component="h2">
                         {name}  
                     </Typography>
 
@@ -60,7 +60,7 @@ const ListItem = (props) => {
                 </CardContent>
             </CardActionArea>
             <CardActions>
-                <Button variant="outlined" size="small" className={classes.btn} component={Link} to={`${baseURL}/${props.page === 'cast' ? 'people' : props.page}/${id}`}>
+                <Button variant="contained" size="small" className={classes.btn} component={Link} to={`${baseURL}/${props.page === 'cast' ? 'people' : props.page}/${id}`}>
                         Learn More
                 </Button>
 

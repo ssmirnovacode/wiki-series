@@ -44,11 +44,16 @@ const CreditItem = (props) => {
         return () => mounted = false;
     }, [endpointUrl])
 
-    const useStyles = makeStyles({
+    const useStyles = makeStyles(theme => ({
         root: {
           width: '18rem',
           backgroundColor: 'rgba(0,0,0, 0.5)',
           color: 'white'
+        },
+        title: {
+          [theme.breakpoints.down('xs')] : {
+            fontSize: '1rem'
+          }
         },
         media: {
           height: '20rem',
@@ -61,7 +66,10 @@ const CreditItem = (props) => {
             display: "-webkit-box",
             "-webkit-line-clamp": 3,
             "-webkit-box-orient": "vertical",
-            color: 'white'
+            color: 'white',
+            [theme.breakpoints.down('xs')] : {
+              fontSize: '.8rem'
+            }
         },
         rating: {    
             display: 'flex',
@@ -70,12 +78,15 @@ const CreditItem = (props) => {
         icon: {
             fontSize: '2rem',
             marginRight: '.7rem',
-            color: 'orange'
+            color: 'orange',
+            [theme.breakpoints.down('xs')] : {
+              fontSize: '1.3rem'
+            }
         },
         btn: {
-            color: 'white'
+            //color: 'white'
         }
-      });
+      }));
 
     const classes = useStyles();
 
@@ -96,7 +107,7 @@ const CreditItem = (props) => {
                 title={itemState.item.name}
                 />
                 <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
+                    <Typography className={classes.title} gutterBottom variant="h5" component="h2">
                         {itemState.item.name}  
                     </Typography>
 
@@ -130,7 +141,7 @@ const CreditItem = (props) => {
             <CardActions>
                 {
                     props.page !== 'characters' && 
-                        <Button variant="outlined" size="small" className={classes.btn}  component={Link} to={`${baseURL}/${props.page === 'cast' ? 'people' : props.page}/${itemState.item.id}`}>
+                        <Button variant="contained" size="small" className={classes.btn}  component={Link} to={`${baseURL}/${props.page === 'cast' ? 'people' : props.page}/${itemState.item.id}`}>
                             Learn More
                         </Button>
                 }
