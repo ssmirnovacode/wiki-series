@@ -9,6 +9,7 @@ import ItemCardInfo from '../item-card-info/item-card-info';
 import { makeStyles } from '@material-ui/core/styles';
 import ItemCardCast from '../item-card-cast/item-card-cast';
 import ItemCardPreviousEpisodes from '../item-card-previousEp/item-card-previousEp';
+import LastEpisode from '../last-episode/last-episode';
 
 const ShowDetails = (props) => {
 
@@ -44,6 +45,8 @@ const ShowDetails = (props) => {
         return () => mounted = false;
     }, [endpointUrl]);
 
+    const lastEpisode = itemState.item && itemState.item._embedded.episodes[itemState.item._embedded.episodes.length-1];
+
     return(
         <>
         
@@ -52,6 +55,7 @@ const ShowDetails = (props) => {
                 <div className={classes.detailsContainer}>
                     <ItemCardMain className={classes.main} page={props.page} item={itemState.item} />
                     <ItemCardInfo className={classes.info} item={itemState.item} />
+                    <LastEpisode item={lastEpisode} />
                     <ItemCardPreviousEpisodes className={classes.episodes} episodes={itemState.item._embedded.episodes} />
                     <ItemCardCast className={classes.cast} cast={itemState.item._embedded.cast} />
                     
