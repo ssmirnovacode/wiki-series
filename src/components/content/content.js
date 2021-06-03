@@ -45,7 +45,7 @@ const Content = (props) => {
             ...appState,
             loading: true
         }));
-        mounted && getItems(`https://cors-anywhere.herokuapp.com/http://api.tvmaze.com/search/${page}?q=${query}`) //url depends on page
+        mounted && getItems(`https://api.tvmaze.com/search/${page}?q=${query}`) //url depends on page
         .then(res => {
             if (res.length > 0) {
                 loadItems(res);
@@ -55,7 +55,7 @@ const Content = (props) => {
                     cards: home ? res.slice(0,5) : res
                 }));
 
-                console.log('items loaded');
+                //console.log('items loaded');
             }
             else {
                 setAppstate(appState => ({

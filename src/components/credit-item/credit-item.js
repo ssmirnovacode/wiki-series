@@ -21,9 +21,11 @@ const CreditItem = (props) => {
         loading: true
     });
 
-    const endpointUrl = props.page === 'characters' ? `https://cors-anywhere.herokuapp.com/${props.href}` :
-            `https://cors-anywhere.herokuapp.com/${props.href}?embed=cast`; 
+    const urlWithHttps = 'https' + props.href.slice(5);
 
+    const endpointUrl = props.page === 'characters' ? `${urlWithHttps}` :
+            `${urlWithHttps}?embed=cast`; 
+    //console.log(endpointUrl);
 
     useEffect( () => {
         let mounted = true;

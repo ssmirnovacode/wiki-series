@@ -29,7 +29,7 @@ const SearchForm = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         setFinalQuery(query); 
-        console.log('Submit completed');;
+        //console.log('Submit completed');;
       }
 
     return(
