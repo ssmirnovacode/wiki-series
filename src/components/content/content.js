@@ -34,10 +34,8 @@ const Content = (props) => {
                 setAppstate(appState => ({
                     ...appState,
                     loading: false,
-                    cards: home ? res.slice(0,5) : res
+                    cards: home ? res.slice(0,6) : res
                 }));
-
-                //console.log('items loaded');
             }
             else {
                 setAppstate(appState => ({
@@ -56,10 +54,8 @@ const Content = (props) => {
         return () => mounted = false;
     }, [query, loadItems, page, home ]);
 
-
     return(
         <main className={classes.container}>
-
             {
                 appState.loading ? <Loading /> :
                 appState.error ? <Error /> :
@@ -70,8 +66,7 @@ const Content = (props) => {
                     <img className={classes.img} src={nothing} alt="Nothing found" /> 
                 </div>
                 </>
-            }
-            
+            }           
         </main>
     )
 }
