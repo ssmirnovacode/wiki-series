@@ -1,6 +1,4 @@
-import React, {useState, useEffect} from 'react';
-import Loading from '../loading/loading';
-import Error from '../error/error';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';

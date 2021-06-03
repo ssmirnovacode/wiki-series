@@ -3,6 +3,13 @@ import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 
 const useStyles = makeStyles(theme => ({
+    root: {
+      width: '100%',
+    },
+    heading: {
+      fontSize: theme.typography.pxToRem(15),
+      fontWeight: theme.typography.fontWeightRegular,
+    },
     container: {
         backgroundColor: 'rgba(0,0,0, 0.5)',
         borderRadius: '5px',
@@ -43,6 +50,7 @@ const useStyles = makeStyles(theme => ({
   
   const StyledTableRow = withStyles((theme) => ({
     root: {
+      //backgroundColor: 'grey',
       '&:nth-of-type(odd)': {
         backgroundColor: theme.palette.action.hover,
       },
