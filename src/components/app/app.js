@@ -8,6 +8,7 @@ import Content from '../content/content';
 import ShowDetails from '../show-details/show-details';
 import PersonDetails from '../person-details/person-details';
 import Home from '../home/home';
+import baseURL from '../../assets/baseURL';
 
 const App = () => {
 
@@ -15,19 +16,19 @@ const App = () => {
         <Router>
             <Header />
             <Navigation />
-            <Route path={'/'} exact component={Home} /> 
-            <Route path={'/shows'} exact component={() => <Content page='shows' />} /> 
-            <Route path={'/people'} exact component={() => <Content page='people' />} />
+            <Route path={`${baseURL}/`} exact component={Home} /> 
+            <Route path={`${baseURL}/shows`} exact component={() => <Content page='shows' />} /> 
+            <Route path={`${baseURL}/people`} exact component={() => <Content page='people' />} />
             {/* <Route path={'/networks'} component={() => <Content page='networks' />} /> */} {/* CORS issue */}
-            <Route path={`/shows/:id`} render={ ({match}) => {
+            <Route path={`${baseURL}/shows/:id`} render={ ({match}) => {
                         const {id} = match.params;
                         return <ShowDetails page='shows' itemId={+id}/>
                     }}/>
-            <Route path={`/people/:id`} render={ ({match}) => {
+            <Route path={`${baseURL}/people/:id`} render={ ({match}) => {
                         const {id} = match.params;
                         return <PersonDetails page='people' itemId={+id}/> 
                     }}/>
-            <Route path={`/characters/:id`} render={ ({match}) => {
+            <Route path={`${baseURL}/characters/:id`} render={ ({match}) => {
                         const {id} = match.params;
                         return <PersonDetails page='characters' itemId={+id}/> 
                     }}/>

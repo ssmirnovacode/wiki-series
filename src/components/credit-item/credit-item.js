@@ -12,6 +12,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import StarsIcon from '@material-ui/icons/Star';
 import { Link } from 'react-router-dom';
+import baseURL from '../../assets/baseURL';
 
 const CreditItem = (props) => { 
 
@@ -70,6 +71,9 @@ const CreditItem = (props) => {
             fontSize: '2rem',
             marginRight: '.7rem',
             color: 'orange'
+        },
+        btn: {
+            color: 'white'
         }
       });
 
@@ -85,7 +89,7 @@ const CreditItem = (props) => {
 
     return(
         <Card className={classes.root} >
-            <CardActionArea disableRipple={props.page === 'characters' ? true : false} component={props.page === 'shows' ? Link : CardMedia} to={`/${props.page === 'cast' ? 'people' : props.page}/${itemState.item.id}`}>
+            <CardActionArea disableRipple={props.page === 'characters' ? true : false} component={props.page === 'shows' ? Link : CardMedia} to={`${baseURL}/${props.page === 'cast' ? 'people' : props.page}/${itemState.item.id}`}>
                 <CardMedia
                 className={classes.media}
                 image={itemState.item.image ? itemState.item.image.medium : 'https://www.allianceplast.com/wp-content/uploads/2017/11/no-image.png'}
@@ -126,7 +130,7 @@ const CreditItem = (props) => {
             <CardActions>
                 {
                     props.page !== 'characters' && 
-                        <Button size="small" color="primary">
+                        <Button variant="outlined" size="small" className={classes.btn}  component={Link} to={`${baseURL}/${props.page === 'cast' ? 'people' : props.page}/${itemState.item.id}`}>
                             Learn More
                         </Button>
                 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import {  makeStyles } from '@material-ui/core/styles';
 import {Link} from 'react-router-dom';
+import baseURL from '../../assets/baseURL';
 
 const Footer = () => {
 
@@ -48,10 +49,10 @@ const Footer = () => {
     return(
         <div className={classes.root}>
             <div >
-                <div><Link className={classes.navlinkMain} to={`/`} >WIKI-series</Link></div>
+                <div><Link className={classes.navlinkMain} to={`${baseURL}/`} >WIKI-series</Link></div>
                 <ul className={classes.nav}>
-                    <li><Link  className={classes.navlink} to={`/shows`} >Shows</Link></li>
-                    <li><Link className={classes.navlink} to={`/people`} >People</Link></li>
+                    <li><Link  className={classes.navlink} to={`${baseURL}/shows`} >Shows</Link></li>
+                    <li><Link className={classes.navlink} to={`${baseURL}/people`} >People</Link></li>
 
                 </ul>
             </div>

@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import StarsIcon from '@material-ui/icons/Star';
 import { Link } from 'react-router-dom';
+import baseURL from '../../assets/baseURL';
 
 const ListItem = (props) => {
 
@@ -18,7 +19,7 @@ const ListItem = (props) => {
 
     return(
         <Card className={classes.root} >
-            <CardActionArea component={Link} to={`/${props.page === 'cast' ? 'people' : props.page}/${id}`}>
+            <CardActionArea component={Link} to={`${baseURL}/${props.page === 'cast' ? 'people' : props.page}/${id}`}>
                 <CardMedia
                 className={classes.media}
                 image={image ? image.medium : 'https://www.allianceplast.com/wp-content/uploads/2017/11/no-image.png'}
@@ -59,7 +60,7 @@ const ListItem = (props) => {
                 </CardContent>
             </CardActionArea>
             <CardActions>
-                <Button variant="outlined" size="small" className={classes.btn} component={Link} to={`/${props.page === 'cast' ? 'people' : props.page}/${id}`}>
+                <Button variant="outlined" size="small" className={classes.btn} component={Link} to={`${baseURL}/${props.page === 'cast' ? 'people' : props.page}/${id}`}>
                         Learn More
                 </Button>
 
