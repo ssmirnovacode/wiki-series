@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import StarsIcon from '@material-ui/icons/Star';
 import { Link } from 'react-router-dom';
 import baseURL from '../../assets/baseURL';
+import noImage from '../../assets/img/no-image.png';
 
 const ListItem = (props) => {
 
@@ -22,7 +23,7 @@ const ListItem = (props) => {
             <CardActionArea component={Link} to={`${baseURL}/${props.page === 'cast' ? 'people' : props.page}/${id}`}>
                 <CardMedia
                 className={classes.media}
-                image={image ? image.medium : 'https://www.allianceplast.com/wp-content/uploads/2017/11/no-image.png'}
+                image={image ? image.medium : noImage}
                 title={name}
                 />
                 <CardContent>

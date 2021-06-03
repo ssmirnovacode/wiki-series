@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import StarsIcon from '@material-ui/icons/Star';
 import { Link } from 'react-router-dom';
 import baseURL from '../../assets/baseURL';
+import noImage from '../../assets/img/no-image.png';
 
 const CreditItem = (props) => { 
 
@@ -103,7 +104,7 @@ const CreditItem = (props) => {
             <CardActionArea disableRipple={props.page === 'characters' ? true : false} component={props.page === 'shows' ? Link : CardMedia} to={`${baseURL}/${props.page === 'cast' ? 'people' : props.page}/${itemState.item.id}`}>
                 <CardMedia
                 className={classes.media}
-                image={itemState.item.image ? itemState.item.image.medium : 'https://www.allianceplast.com/wp-content/uploads/2017/11/no-image.png'}
+                image={itemState.item.image ? itemState.item.image.medium : noImage}
                 title={itemState.item.name}
                 />
                 <CardContent>
