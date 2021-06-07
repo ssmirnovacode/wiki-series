@@ -41,13 +41,8 @@ const useStyles = makeStyles(theme => ({
             overflow: "hidden",
             textOverflow: "ellipsis",
             display: "-webkit-box",
-            "-webkit-line-clamp": 12,
+            "-webkit-line-clamp": 20,
             "-webkit-box-orient": "vertical",
-         /*    [theme.breakpoints.down('sm')] : {
-              display: "-webkit-box",
-            "-webkit-line-clamp": 8,
-            "-webkit-box-orient": "vertical"
-            }, */
             color: 'white',
             gridColumn: '1/12',
             lineHeight: '1.2rem',

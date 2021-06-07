@@ -31,7 +31,7 @@ const LastEpisode = ({item}) => {
             overflow: "hidden",
             textOverflow: "ellipsis",
             display: "-webkit-box",
-            "-webkit-line-clamp": 3,
+            "-webkit-line-clamp": 10,
             "-webkit-box-orient": "vertical",
             color: 'white',
             [theme.breakpoints.down('xs')] : {
