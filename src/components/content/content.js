@@ -56,8 +56,10 @@ const Content = (props) => {
     }, [query, loadItems, page, home ]);
 
     return(
+        <>
+        <BreadCrumbs home={home} page={page} />
         <main className={classes.container}>
-            <BreadCrumbs home={home} page={page} />
+            
             {
                 appState.loading ? <Loading /> :
                 appState.error ? <Error /> :
@@ -70,6 +72,7 @@ const Content = (props) => {
                 </>
             }           
         </main>
+        </>
     )
 }
 
