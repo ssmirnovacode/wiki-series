@@ -26,7 +26,7 @@ const classes = useStyles();
 
     useEffect( () => {
         setQuery('black');
-        console.log('Initial query set');
+        //console.log('Initial query set');
     }, [setQuery])
 
     return(

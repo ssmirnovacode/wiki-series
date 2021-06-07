@@ -14,7 +14,7 @@ const ItemCardCast = ({cast}) => {
     return(
         <section className={classes.container}>
             <h2 className={classes.title}>CAST: </h2><hr/>
-            <ItemList items={actors} page={'cast'} />
+            <ItemList btn={actors.length > 9} items={actors} page={'cast'} />
         </section>
         
     )
