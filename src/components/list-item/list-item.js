@@ -2,10 +2,8 @@ import React from 'react';
 import useStyles from './styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-//import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-//import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import StarsIcon from '@material-ui/icons/Star';
 import { Link } from 'react-router-dom';
@@ -51,8 +49,8 @@ const ListItem = (props) => {
                         
                               
                     </Typography>
-                    <Typography className={classes.descr} variant="body2" color="textSecondary" component="p" 
-                        dangerouslySetInnerHTML={{__html: props.show ? props.show.summary : null}}/>
+                    {/* <Typography className={classes.descr} variant="body2" color="textSecondary" component="p" 
+                        dangerouslySetInnerHTML={{__html: props.show ? props.show.summary : null}}/> */}
                     <Typography className={classes.descr} variant="body2" color="textSecondary" component="p">
                         {
                             props.character ? `as ${props.character.name}` : null
