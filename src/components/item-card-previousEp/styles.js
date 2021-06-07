@@ -8,7 +8,11 @@ const useStyles = makeStyles(theme => ({
     },
     heading: {
       fontSize: theme.typography.pxToRem(15),
-      fontWeight: theme.typography.fontWeightRegular,
+      flexBasis: '33.33%',
+      flexShrink: 0,
+    },
+    secondaryHeading: {
+      fontSize: theme.typography.pxToRem(15)
     },
     container: {
         backgroundColor: 'rgba(0,0,0, 0.5)',

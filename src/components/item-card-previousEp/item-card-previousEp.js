@@ -23,6 +23,12 @@ const ItemCardPreviousEpisodes = ({episodes}) => {
 
     const showMoreEpisodes = () => episodesShown <= episodes.length && setEpisodesShown(episodesShown => episodesShown + 10);
 
+    const [expanded, setExpanded] = React.useState(false);
+
+    const handleChange = (panel) => (event, isExpanded) => {
+        setExpanded(isExpanded ? panel : false);
+    };
+
     return(
         <section className={classes.container}>
             <h2 className={classes.title}>Previous episodes: </h2><hr/>
@@ -30,8 +36,8 @@ const ItemCardPreviousEpisodes = ({episodes}) => {
                 <Table className={classes.table} aria-label="customized table">
                     <TableHead>
                     <TableRow>
-                        <StyledTableCell className={classes.tableTitles}>Seas./ep.</StyledTableCell>
-                        <StyledTableCell className={classes.tableTitles}>Episode title</StyledTableCell>
+                        <StyledTableCell className={classes.tableTitles}>Season x Episode </StyledTableCell>
+                        {/* <StyledTableCell className={classes.tableTitles}>Episode title</StyledTableCell> */}
                         <StyledTableCell className={classes.tableTitles} >Airdate</StyledTableCell>
 
                     </TableRow>
@@ -39,25 +45,26 @@ const ItemCardPreviousEpisodes = ({episodes}) => {
                     <TableBody>
                     {episodesToRender.map((ep) => (
                         <StyledTableRow key={ep.name}>
-                            <StyledTableCell component="th" scope="row">{ep.season} x {ep.number}
+                           {/*  <StyledTableCell component="th" scope="row">{ep.season} x {ep.number}
                                 
-                            </StyledTableCell>
+                            </StyledTableCell> */}
                             <StyledTableCell >
-                                <Accordion>
-                                <AccordionSummary
-                                expandIcon={<ExpandMoreIcon />}
-                                aria-controls="panel1a-content"
-                                id="panel1a-header"
-                                >
-                                <Typography className={classes.heading}>{ep.name}</Typography>
-                                </AccordionSummary>
-                                <AccordionDetails>
-                                    <Typography className={classes.descr} variant="body2" component="p" 
-                                         dangerouslySetInnerHTML={{__html: ep.summary ? ep.summary : null}}/>
-                                </AccordionDetails>
+                                <Accordion expanded={expanded === ep.season + ep.number} onChange={handleChange(ep.season + ep.number)}>
+                                    <AccordionSummary
+                                    expandIcon={<ExpandMoreIcon />}
+                                    aria-controls="panel1bh-content"
+                                    id={ep.season + ep.number}
+                                    >
+                                        <Typography className={classes.heading}>{ep.season} x {ep.number} </Typography>    
+                                        <Typography className={classes.secondaryHeading}>{ ep.name}</Typography>
+                                    </AccordionSummary>
+                                    <AccordionDetails>
+                                        <Typography className={classes.descr} variant="body2" component="p" 
+                                            dangerouslySetInnerHTML={{__html: ep.summary ? ep.summary : null}}/>
+                                    </AccordionDetails>
                             </Accordion>
                                 </StyledTableCell>
-                            <StyledTableCell >{ep.airdate}</StyledTableCell>
+                            <StyledTableCell >{ep.airdate && ep.airdate.split('-').reverse().join('/')}</StyledTableCell>
                             
                         </StyledTableRow>
                     ))}
