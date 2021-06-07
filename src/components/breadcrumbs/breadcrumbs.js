@@ -4,6 +4,7 @@ import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import {Link} from 'react-router-dom';
 import useStyles from './styles';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import baseURL from '../../assets/baseURL';
 
 const BreadCrumbs = ({home, page, title}) => {
 
@@ -16,10 +17,10 @@ const BreadCrumbs = ({home, page, title}) => {
   return (
       
     <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} className={classes.container} aria-label="breadcrumb">
-      <Link className={classes.link}  to="/" >
+      <Link className={classes.link}  to={`${baseURL}/`} >
         Home
       </Link>
-      <Link className={classes.link} to={`/${page}`}>
+      <Link className={classes.link} to={`${baseURL}/${page}`}>
       {page === 'shows' ? 'Shows' : page === 'people' ? 'People' : null}
       </Link>
       {
