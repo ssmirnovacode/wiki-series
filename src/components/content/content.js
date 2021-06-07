@@ -7,6 +7,7 @@ import {connect} from 'react-redux';
 import {loadItems} from '../../redux/actions';
 import {getItems} from '../../services/requests';
 import useStyles from './styles';
+import BreadCrumbs from '../breadcrumbs/breadcrumbs';
 
 const Content = (props) => {
 
@@ -56,6 +57,7 @@ const Content = (props) => {
 
     return(
         <main className={classes.container}>
+            <BreadCrumbs home={home} page={page} />
             {
                 appState.loading ? <Loading /> :
                 appState.error ? <Error /> :

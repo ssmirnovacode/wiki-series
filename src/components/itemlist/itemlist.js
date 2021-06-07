@@ -7,18 +7,21 @@ const Itemlist = ({items, page, btn}) => {
 
     //console.log(items);
 
-    const useStyles = makeStyles({
+    const useStyles = makeStyles(theme => ({
         root: {
             display: 'flex',
             flexWrap: 'wrap',
             gap: '1rem',
+            [theme.breakpoints.down('xs')] : {
+                gap: '.5rem'
+              },
             justifyContent: 'space-around'
         },
         btn: {
             marginLeft: '1rem',
             marginTop: '2rem',
         }
-      });
+      }));
 
     const classes = useStyles();
 

@@ -5,6 +5,7 @@ import Error from '../error/error';
 import { getItemById } from '../../services/requests';
 import ItemCardMain from '../item-card-main/item-card-main';
 import CreditItem from '../credit-item/credit-item';
+import BreadCrumbs from '../breadcrumbs/breadcrumbs';
 
 const PersonDetails = (props) => {
 
@@ -43,6 +44,7 @@ const PersonDetails = (props) => {
 
     return(
         <>
+        <BreadCrumbs home={false} page={props.page} title={itemState.item && itemState.item.name}/>
         {
             itemState.loading ? <Loading /> : itemState.error ? <Error /> : 
                 <div className={classes.detailsContainer}>

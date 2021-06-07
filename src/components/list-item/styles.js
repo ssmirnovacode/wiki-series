@@ -4,7 +4,7 @@ const useStyles = makeStyles(theme => ({
     root: {
       width: '15rem',
       [theme.breakpoints.down('xs')] : {
-        width: '10rem'
+        width: '11rem'
       },
       backgroundColor: 'rgba(0,0,0, 0.5)',
       color: 'white'

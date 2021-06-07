@@ -10,6 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import ItemCardCast from '../item-card-cast/item-card-cast';
 import ItemCardPreviousEpisodes from '../item-card-previousEp/item-card-previousEp';
 import LastEpisode from '../last-episode/last-episode';
+import BreadCrumbs from '../breadcrumbs/breadcrumbs';
 
 const ShowDetails = (props) => {
 
@@ -49,7 +50,7 @@ const ShowDetails = (props) => {
 
     return(
         <>
-        
+        <BreadCrumbs home={false} page={props.page} title={itemState.item && itemState.item.name}/>
         {
             itemState.loading ? <Loading /> : itemState.error ? <Error /> : 
                 <div className={classes.detailsContainer}>
