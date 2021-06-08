@@ -1,4 +1,4 @@
-import React, {useReducer} from 'react';
+import React from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -14,7 +14,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import {Link} from 'react-router-dom';
 //import {connect} from 'react-redux';
 //import {setQuery} from '../../redux/actions';
-import {reducer, initialState} from '../../redux/reducer';
+//import {reducer, initialState} from '../../redux/reducer';
 
 const Header = (props) =>  {
 
@@ -88,15 +88,14 @@ const Header = (props) =>  {
   }));
 
   //const {setQuery} = props;
-  const [state, dispatch] = useReducer(reducer, initialState);
+  //const [state, dispatch] = useReducer(reducer, initialState);
 
   const [endpoint, setEndpoint] = React.useState('');
 
   const handleSubmit = (event) => {
       event.preventDefault();
-      dispatch(endpoint => ({type: 'SET_QUERY', payload: endpoint}));
+      props.setQuery(endpoint);
       console.log('Submit completed');
-      console.log(state.query);
   }
   const classes = useStyles();
 

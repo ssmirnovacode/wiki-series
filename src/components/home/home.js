@@ -8,7 +8,7 @@ import {reducer, initialState} from '../../redux/reducer';
 const Home = (props) => {
 
   //const {setQuery} = props;
-  const [state, dispatch] = useReducer(reducer, initialState);
+  //const [state, dispatch] = useReducer(reducer, initialState);
 
   const useStyles = makeStyles(theme => ({
     container: {
@@ -26,17 +26,17 @@ const Home = (props) => {
 
   const classes = useStyles();
 
-    useEffect( () => {
+    /* useEffect( () => {
         dispatch({type: 'SET_QUERY', payload: 'black'});
         console.log(state.query);
-    }, [])
+    }, []) */
 
     return(
         <section className={classes.container}>
           <h2 className={classes.title}>Trending TV shows</h2>
-          <Content home page='shows' />
+          <Content home query={props.query} page='shows' />
           <h2 className={classes.title}>Trending actors</h2>
-          <Content home page='people' />
+          <Content home query={props.query} page='people' />
         </section>
     )
 }

@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useReducer} from 'react';
+import React, {useState, useEffect} from 'react';
 import Itemlist from '../itemlist/itemlist';
 import Loading from '../loading/loading';
 import Error from '../error/error';
@@ -8,17 +8,17 @@ import nothing from '../../assets/img/nothing.jpg';
 import {getItems} from '../../services/requests';
 import useStyles from './styles';
 import BreadCrumbs from '../breadcrumbs/breadcrumbs';
-import {reducer, initialState} from '../../redux/reducer';
+//import {reducer, initialState} from '../../redux/reducer';
 
 const Content = (props) => {
 
     const classes = useStyles();
 
-    const { page, loadItems, home } = props;
+    const { page, query, home } = props;
     //console.log(items);
 
-    const [state, dispatch] = useReducer(reducer, initialState);
-    console.log(state.query);
+    //const [state, dispatch] = useReducer(reducer, initialState);
+    //console.log(state.query);
 
     const [appState, setAppstate] = useState({
         cards: [],
@@ -32,7 +32,7 @@ const Content = (props) => {
             ...appState,
             loading: true
         }));
-        mounted && getItems(`https://api.tvmaze.com/search/${page}?q=${state.query}`) //url depends on page
+        mounted && getItems(`https://api.tvmaze.com/search/${page}?q=${query}`) //url depends on page
         .then(res => {
             if (res.length > 0) {
                 //loadItems(res);
@@ -57,7 +57,7 @@ const Content = (props) => {
             error: true
         })));
         return () => mounted = false;
-    }, [state.query, page, home ]);
+    }, [query, page, home ]);
 
     return(
         <>
