@@ -1,7 +1,7 @@
 import { fade, makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
-  appbar: {
+  /* appbar: {
       backgroundColor: 'grey'
   },
   grow: {
@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     },
     textDecoration: 'none',
     color: 'white'
-  },
+  }, */
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -41,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    color: 'white'
   },
   inputRoot: {
     color: 'inherit',
@@ -55,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
       width: '20ch',
     },
   },
-  sectionDesktop: {
+  /* sectionDesktop: {
     display: 'none',
     [theme.breakpoints.up('md')]: {
       display: 'flex',
@@ -66,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('md')]: {
       display: 'none',
     },
-  },
+  }, */
 }));
 
 export default useStyles;
