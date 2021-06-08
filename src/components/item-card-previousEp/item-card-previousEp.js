@@ -23,7 +23,7 @@ const ItemCardPreviousEpisodes = ({episodes}) => {
 
     const showMoreEpisodes = () => episodesShown <= episodes.length && setEpisodesShown(episodesShown => episodesShown + 10);
 
-    const [expanded, setExpanded] = React.useState(false);
+    const [expanded, setExpanded] = useState(false);
 
     const handleChange = (panel) => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);

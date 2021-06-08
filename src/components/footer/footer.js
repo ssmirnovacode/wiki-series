@@ -5,9 +5,8 @@ import baseURL from '../../assets/baseURL';
 
 const Footer = () => {
 
-    
-    
-      const classes = useStyles();
+   const classes = useStyles();
+
 
     return(
         <div className={classes.root}>

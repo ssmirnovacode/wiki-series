@@ -18,7 +18,7 @@ const ShowDetails = (props) => {
         detailsContainer: {
           display: 'grid',
         }
-      });
+    });
 
     const classes = useStyles();
 
