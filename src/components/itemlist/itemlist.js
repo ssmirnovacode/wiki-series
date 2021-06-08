@@ -1,27 +1,9 @@
 import React, {useState} from 'react';
 import ListItem from '../list-item/list-item';
-import { makeStyles } from '@material-ui/core/styles';
+import useStyles from './styles';
 import Button from '@material-ui/core/Button';
 
 const Itemlist = ({items, page, btn}) => {
-
-    //console.log(items);
-
-    const useStyles = makeStyles(theme => ({
-        root: {
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '1rem',
-            [theme.breakpoints.down('xs')] : {
-                gap: '.5rem'
-              },
-            justifyContent: 'space-around'
-        },
-        btn: {
-            marginLeft: '1rem',
-            marginTop: '2rem',
-        }
-      }));
 
     const classes = useStyles();
 

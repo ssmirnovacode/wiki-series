@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import useStyles from './styles';
 import { TextField } from '@material-ui/core';
 import { Button } from '@material-ui/core';
 
@@ -8,21 +8,6 @@ const SearchForm = (props) => {
     const {setFinalQuery} = props;
 
     const [query, setQuery] = useState('');
-
-    const useStyles = makeStyles({
-        root: {
-            display: 'flex',
-            gap: '0.3rem',
-            margin: '1rem',
-            '& input:valid:focus + fieldset': {
-                borderColor: 'black',
-                borderWidth: 2,
-              },
-              '& label.Mui-focused': {
-                color: 'black',
-              },
-        }
-      });
 
     const classes = useStyles();
 
