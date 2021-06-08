@@ -1,28 +1,39 @@
 import React, {useState} from 'react';
 import useStyles from './styles';
-import { TextField } from '@material-ui/core';
-import { Button } from '@material-ui/core';
+import InputBase from '@material-ui/core/InputBase';
+import SearchIcon from '@material-ui/icons/Search';
 
 const SearchForm = (props) => {
 
     const {setFinalQuery} = props;
 
-    const [query, setQuery] = useState('');
-
-    const classes = useStyles();
+    const [endpoint, setEndpoint] = React.useState('');
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        setFinalQuery(query); 
-        //console.log('Submit completed');;
-      }
+        setFinalQuery(endpoint);
+        console.log('Submit completed');
+    }
+
+    const classes = useStyles();
 
     return(
-        <form onSubmit={(e) => handleSubmit(e)} className={classes.root}>
-            <TextField id="outlined-search" label="Search for series" 
-                type="search" variant="outlined"  aria-describedby="search" value={query} onChange={(e) => setQuery(e.target.value)}/>
-            <Button variant="contained" type="submit">Search</Button>
-        </form>
+        <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                  <SearchIcon />
+              </div>
+              <form onSubmit={(e) => handleSubmit(e)} className={classes.root}>
+                  <InputBase
+                      placeholder="Search…"
+                      classes={{
+                      root: classes.inputRoot,
+                      input: classes.inputInput,
+                      }}
+                      inputProps={{ 'aria-label': 'search' }}
+                      value={endpoint} onChange={(e) => setEndpoint(e.target.value)}
+                  />
+              </form>
+          </div>
     )
 };
 

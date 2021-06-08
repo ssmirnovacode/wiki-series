@@ -6,6 +6,7 @@ import nothing from '../../assets/img/nothing.jpg';
 import {getItems} from '../../services/requests';
 import useStyles from './styles';
 import BreadCrumbs from '../breadcrumbs/breadcrumbs';
+import SearchForm from '../search-form/search-form';
 
 const Content = (props) => {
 
@@ -53,6 +54,9 @@ const Content = (props) => {
     return(
         <>
         <BreadCrumbs home={home} page={page} />
+        {
+            !home && <SearchForm setFinalQuery={props.setQuery} />
+        }
         <main className={classes.container}>
             
             {
