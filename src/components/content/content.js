@@ -3,8 +3,6 @@ import Itemlist from '../itemlist/itemlist';
 import Loading from '../loading/loading';
 import Error from '../error/error';
 import nothing from '../../assets/img/nothing.jpg';
-import {connect} from 'react-redux';
-import {loadItems} from '../../redux/actions';
 import {getItems} from '../../services/requests';
 import useStyles from './styles';
 import BreadCrumbs from '../breadcrumbs/breadcrumbs';
@@ -13,8 +11,7 @@ const Content = (props) => {
 
     const classes = useStyles();
 
-    const { page, query, loadItems, home } = props;
-    //console.log(items);
+    const { page, query, home } = props;
 
     const [appState, setAppstate] = useState({
         cards: [],
@@ -31,7 +28,6 @@ const Content = (props) => {
         mounted && getItems(`https://api.tvmaze.com/search/${page}?q=${query}`) //url depends on page
         .then(res => {
             if (res.length > 0) {
-                loadItems(res);
                 setAppstate(appState => ({
                     ...appState,
                     loading: false,
@@ -44,7 +40,6 @@ const Content = (props) => {
                     loading: false,
                     cards: []
                 }));
-                loadItems([]);
             }      
         })
         .catch(() => setAppstate(appState => ({
@@ -53,7 +48,7 @@ const Content = (props) => {
             error: true
         })));
         return () => mounted = false;
-    }, [query, loadItems, page, home ]);
+    }, [query, page, home ]);
 
     return(
         <>
@@ -75,14 +70,5 @@ const Content = (props) => {
         </>
     )
 }
-
-const mapStateToProps = (state) => ({
-    items: state.items,
-    query: state.query
-  });
-
-  const mapDispatchToProps = {
-    loadItems
-  };
   
-export default connect(mapStateToProps, mapDispatchToProps)(Content);
+export default Content;

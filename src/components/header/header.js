@@ -7,13 +7,9 @@ import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-//import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-//import MoreIcon from '@material-ui/icons/MoreVert';
 import {Link} from 'react-router-dom';
-import {connect} from 'react-redux';
-import {setQuery} from '../../redux/actions';
 
 const Header = (props) =>  {
 
@@ -86,14 +82,12 @@ const Header = (props) =>  {
     },
   }));
 
-  const {setQuery} = props;
-
   const [endpoint, setEndpoint] = React.useState('');
 
   const handleSubmit = (event) => {
       event.preventDefault();
-      setQuery(endpoint);
-      console.log('Submit completed');;
+      props.setQuery(endpoint);
+      console.log('Submit completed');
   }
   const classes = useStyles();
 
@@ -229,13 +223,5 @@ const Header = (props) =>  {
       
 }
 
-const mapStateToProps = state => ({
-  items: state.items,
-  query: state.query
-});
 
-const mapDispatchToProps = {
-  setQuery
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default Header;

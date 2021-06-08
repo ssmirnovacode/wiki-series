@@ -39,4 +39,5 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
-  export default useStyles;
+export default useStyles;
+
