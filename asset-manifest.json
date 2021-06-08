@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/wiki-series/static/css/main.9c16268c.chunk.css",
-    "main.js": "/wiki-series/static/js/main.36d608b8.chunk.js",
-    "main.js.map": "/wiki-series/static/js/main.36d608b8.chunk.js.map",
+    "main.js": "/wiki-series/static/js/main.adaf2e25.chunk.js",
+    "main.js.map": "/wiki-series/static/js/main.adaf2e25.chunk.js.map",
     "runtime-main.js": "/wiki-series/static/js/runtime-main.1108069b.js",
     "runtime-main.js.map": "/wiki-series/static/js/runtime-main.1108069b.js.map",
     "static/js/2.259a86b1.chunk.js": "/wiki-series/static/js/2.259a86b1.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.1108069b.js",
     "static/js/2.259a86b1.chunk.js",
     "static/css/main.9c16268c.chunk.css",
-    "static/js/main.36d608b8.chunk.js"
+    "static/js/main.adaf2e25.chunk.js"
   ]
 }
