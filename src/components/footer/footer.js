@@ -7,7 +7,6 @@ const Footer = () => {
 
    const classes = useStyles();
 
-
     return(
         <div className={classes.root}>
             <div >

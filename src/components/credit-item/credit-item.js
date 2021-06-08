@@ -5,10 +5,8 @@ import { getItemById } from '../../services/requests';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-//import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-//import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import StarsIcon from '@material-ui/icons/Star';
 import { Link } from 'react-router-dom';
@@ -27,7 +25,6 @@ const CreditItem = (props) => {
 
     const endpointUrl = props.page === 'characters' ? `${urlWithHttps}` :
             `${urlWithHttps}?embed=cast`; 
-    //console.log(endpointUrl);
 
     useEffect( () => {
         let mounted = true;
@@ -114,7 +111,6 @@ const CreditItem = (props) => {
                     <Typography className={classes.title} gutterBottom variant="h5" component="h2">
                         {itemState.item.name}  
                     </Typography>
-
                     {
                         props.page === 'shows' &&
                         <>
@@ -135,22 +131,11 @@ const CreditItem = (props) => {
                             
                         </Typography> 
                         </> 
-                        
                     }
-                        
                     <Typography className={classes.descr} variant="body2" color="textSecondary" component="p" 
                         dangerouslySetInnerHTML={{__html: itemState.item.summary ? itemState.item.summary : null}}/>
                 </CardContent>
             </CardActionArea>
-            {/* <CardActions>
-                {
-                    props.page !== 'characters' && 
-                        <Button variant="contained" size="small" className={classes.btn}  component={Link} to={`${baseURL}/${props.page === 'cast' ? 'people' : props.page}/${itemState.item.id}`}>
-                            Learn More
-                        </Button>
-                }
-                
-            </CardActions> */}
         </Card>
     )
 }

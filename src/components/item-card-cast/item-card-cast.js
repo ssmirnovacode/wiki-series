@@ -16,7 +16,6 @@ const ItemCardCast = ({cast}) => {
             <h2 className={classes.title}>CAST: </h2><hr/>
             <ItemList btn={actors.length > 9} items={actors} page={'cast'} />
         </section>
-        
     )
 }
 

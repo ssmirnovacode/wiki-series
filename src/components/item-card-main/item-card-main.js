@@ -26,7 +26,6 @@ const ItemCardMain = (props) => {
                     <Typography gutterBottom variant="h5" component="h2" className={classes.title}>
                         {name}  
                     </Typography>
-
                     {
                         props.page === 'shows' ?
                         <>
@@ -69,11 +68,9 @@ const ItemCardMain = (props) => {
                         </Typography>
                         </>
                     }
-
                 </CardContent>
             </CardActionArea>
         </Card>
-
     )
 }
 

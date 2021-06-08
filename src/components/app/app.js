@@ -10,7 +10,6 @@ import PersonDetails from '../person-details/person-details';
 import Home from '../home/home';
 import baseURL from '../../assets/baseURL';
 
-
 const App = () => {
 
     const [query, setQuery] = useState('black'); // initial query set to 'black' for demo purposes
@@ -18,9 +17,7 @@ const App = () => {
     return(
         <Router> 
             <Header />
-            
             <Navigation />
-            
             <Route path={`${baseURL}/`} exact component={() => <Home query={query} />} /> 
             <Route path={`${baseURL}/shows`} exact component={() => <Content setQuery={setQuery} query={query} page='shows' />} /> 
             <Route path={`${baseURL}/people`} exact component={() => <Content setQuery={setQuery} query={query} page='people' />} />

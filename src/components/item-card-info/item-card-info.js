@@ -8,7 +8,7 @@ import {getCountryCode} from '../../assets/functions/functions';
 
 const ItemCardInfo = (props) => {
 
-    const {id, /* image, */ name, genres, status, premiered, /* rating, */ network, language, schedule, runtime} = props.item;
+    const {id, name, genres, status, premiered, network, language, schedule, runtime} = props.item;
 
     const classes = useStyles();
 

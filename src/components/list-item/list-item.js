@@ -28,9 +28,7 @@ const ListItem = (props) => {
                     <Typography className={classes.title} gutterBottom variant="h5" component="h2">
                         {name}  
                     </Typography>
-
                     <Typography className={classes.rating} gutterBottom component="h4">
-                        
                         {
                             props.page === 'shows' ? 
                             <>
@@ -46,11 +44,8 @@ const ListItem = (props) => {
                             }
                         </div> : null
                         }
-                        
-                              
                     </Typography>
-                    {/* <Typography className={classes.descr} variant="body2" color="textSecondary" component="p" 
-                        dangerouslySetInnerHTML={{__html: props.show ? props.show.summary : null}}/> */}
+
                     <Typography className={classes.descr} variant="body2" color="textSecondary" component="p">
                         {
                             props.character ? `as ${props.character.name}` : null
@@ -58,13 +53,7 @@ const ListItem = (props) => {
                     </Typography>
                 </CardContent>
             </CardActionArea>
-            {/* <CardActions>
-                <Button variant="contained" size="small" className={classes.btn} component={Link} to={`${baseURL}/${props.page === 'cast' ? 'people' : props.page}/${id}`}>
-                        Learn More
-                </Button>
-
-            </CardActions> */}
-            </Card>
+        </Card>
     )
 }
 

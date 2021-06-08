@@ -36,8 +36,7 @@ const ItemCardPreviousEpisodes = ({episodes}) => {
                 <Table className={classes.table} aria-label="customized table">
                     <TableHead>
                     <TableRow>
-                        <StyledTableCell className={classes.tableTitles}>Season x Episode </StyledTableCell>
-                        {/* <StyledTableCell className={classes.tableTitles}>Episode title</StyledTableCell> */}
+                        <StyledTableCell className={classes.tableTitles}>Season x Episode </StyledTableCell> 
                         <StyledTableCell className={classes.tableTitles} >Airdate</StyledTableCell>
 
                     </TableRow>
@@ -45,9 +44,6 @@ const ItemCardPreviousEpisodes = ({episodes}) => {
                     <TableBody>
                     {episodesToRender.map((ep) => (
                         <StyledTableRow key={ep.name}>
-                           {/*  <StyledTableCell component="th" scope="row">{ep.season} x {ep.number}
-                                
-                            </StyledTableCell> */}
                             <StyledTableCell >
                                 <Accordion expanded={expanded === ep.season + ep.number} onChange={handleChange(ep.season + ep.number)}>
                                     <AccordionSummary
@@ -75,7 +71,6 @@ const ItemCardPreviousEpisodes = ({episodes}) => {
                 episodesShown < episodes.length ?  <Button className={classes.btn} variant="contained" onClick={showMoreEpisodes}>View more</Button> : 
                 <Button className={classes.btn} variant="contained" onClick={() => setEpisodesShown(4)}>View less</Button>
             }
-           
         </section>
     )
 }

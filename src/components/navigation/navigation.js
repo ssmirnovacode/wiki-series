@@ -29,12 +29,10 @@ const Navigation = () => {
                 value={value}
                 TabIndicatorProps={{style: {background:'white'}}}
                 onChange={handleChange}
-                aria-label="navigation tabs" className={classes.tabs}
-            >
-                <Tab label="Home" component={Link} to={`${baseURL}/`} />
-                <Tab label="Shows" component={Link} to={`${baseURL}/shows`} />
-                <Tab label="People" component={Link} to={`${baseURL}/people`} />
-                {/* <Tab label="Networks" component={Link} to={'/networks'} /> */}
+                aria-label="navigation tabs" className={classes.tabs}>
+                    <Tab label="Home" component={Link} to={`${baseURL}/`} />
+                    <Tab label="Shows" component={Link} to={`${baseURL}/shows`} />
+                    <Tab label="People" component={Link} to={`${baseURL}/people`} />
             </Tabs>
         </Paper>
     )

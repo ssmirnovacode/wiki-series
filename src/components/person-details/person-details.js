@@ -77,12 +77,6 @@ const PersonDetails = (props) => {
                             </div>
                         </div>     </>
                     }
-                    
-                    
-                    {/* <ItemCardInfo className={classes.info} item={itemState.item} />
-                    <ItemCardPreviousEpisodes className={classes.episodes} episodes={itemState.item._embedded.episodes} />
-                    <ItemCardCast className={classes.cast} cast={itemState.item._embedded.cast} /> */}
-                    
                 </div>
         }
         </>
