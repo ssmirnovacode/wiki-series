@@ -7,14 +7,9 @@ import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-//import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-//import MoreIcon from '@material-ui/icons/MoreVert';
 import {Link} from 'react-router-dom';
-//import {connect} from 'react-redux';
-//import {setQuery} from '../../redux/actions';
-//import {reducer, initialState} from '../../redux/reducer';
 
 const Header = (props) =>  {
 
@@ -86,9 +81,6 @@ const Header = (props) =>  {
       },
     },
   }));
-
-  //const {setQuery} = props;
-  //const [state, dispatch] = useReducer(reducer, initialState);
 
   const [endpoint, setEndpoint] = React.useState('');
 

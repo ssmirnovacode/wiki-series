@@ -1,4 +1,4 @@
-import React, {useState, useReducer, useContext} from 'react';
+import React, {useState} from 'react';
 import './app.scss';
 import Header from '../header/header';
 import Footer from '../footer/footer';
@@ -12,7 +12,7 @@ import baseURL from '../../assets/baseURL';
 
 const App = () => {
 
-    const [query, setQuery] = useState('black');
+    const [query, setQuery] = useState('black'); // initial query set to 'black' for demo purposes
 
     return(
         <Router> 
@@ -21,7 +21,6 @@ const App = () => {
             <Route path={`${baseURL}/`} exact component={() => <Home query={query} />} /> 
             <Route path={`${baseURL}/shows`} exact component={() => <Content query={query} page='shows' />} /> 
             <Route path={`${baseURL}/people`} exact component={() => <Content query={query} page='people' />} />
-            {/* <Route path={'/networks'} component={() => <Content page='networks' />} /> */} {/* CORS issue */}
             <Route path={`${baseURL}/shows/:id`} render={ ({match}) => {
                         const {id} = match.params;
                         return <ShowDetails page='shows' itemId={+id}/>
@@ -29,10 +28,6 @@ const App = () => {
             <Route path={`${baseURL}/people/:id`} render={ ({match}) => {
                         const {id} = match.params;
                         return <PersonDetails page='people' itemId={+id}/> 
-                    }}/>
-            <Route path={`${baseURL}/characters/:id`} render={ ({match}) => {
-                        const {id} = match.params;
-                        return <PersonDetails page='characters' itemId={+id}/> 
                     }}/>
             <Footer />
         </Router>
