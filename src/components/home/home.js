@@ -1,12 +1,14 @@
-import React, {useEffect} from 'react';
-import {connect} from 'react-redux';
-import {setQuery} from '../../redux/actions';
+import React, {useEffect, useReducer} from 'react';
+//import {connect} from 'react-redux';
+//import {setQuery} from '../../redux/actions';
 import Content from '../content/content';
 import { makeStyles } from '@material-ui/core/styles';
+import {reducer, initialState} from '../../redux/reducer';
 
 const Home = (props) => {
 
-  const {setQuery} = props;
+  //const {setQuery} = props;
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const useStyles = makeStyles(theme => ({
     container: {
@@ -22,12 +24,12 @@ const Home = (props) => {
     }
   }));
 
-const classes = useStyles();
+  const classes = useStyles();
 
     useEffect( () => {
-        setQuery('black');
-        //console.log('Initial query set');
-    }, [setQuery])
+        dispatch({type: 'SET_QUERY', payload: 'black'});
+        console.log(state.query);
+    }, [])
 
     return(
         <section className={classes.container}>
@@ -38,14 +40,5 @@ const classes = useStyles();
         </section>
     )
 }
-
-const mapStateToProps = (state) => ({
-    items: state.items,
-    query: state.query
-  });
-
-  const mapDispatchToProps = {
-    setQuery
-  };
   
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Home;

@@ -1,20 +1,24 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useReducer} from 'react';
 import Itemlist from '../itemlist/itemlist';
 import Loading from '../loading/loading';
 import Error from '../error/error';
 import nothing from '../../assets/img/nothing.jpg';
-import {connect} from 'react-redux';
-import {loadItems} from '../../redux/actions';
+//import {connect} from 'react-redux';
+//import {loadItems} from '../../redux/actions';
 import {getItems} from '../../services/requests';
 import useStyles from './styles';
 import BreadCrumbs from '../breadcrumbs/breadcrumbs';
+import {reducer, initialState} from '../../redux/reducer';
 
 const Content = (props) => {
 
     const classes = useStyles();
 
-    const { page, query, loadItems, home } = props;
+    const { page, loadItems, home } = props;
     //console.log(items);
+
+    const [state, dispatch] = useReducer(reducer, initialState);
+    console.log(state.query);
 
     const [appState, setAppstate] = useState({
         cards: [],
@@ -28,10 +32,10 @@ const Content = (props) => {
             ...appState,
             loading: true
         }));
-        mounted && getItems(`https://api.tvmaze.com/search/${page}?q=${query}`) //url depends on page
+        mounted && getItems(`https://api.tvmaze.com/search/${page}?q=${state.query}`) //url depends on page
         .then(res => {
             if (res.length > 0) {
-                loadItems(res);
+                //loadItems(res);
                 setAppstate(appState => ({
                     ...appState,
                     loading: false,
@@ -44,7 +48,7 @@ const Content = (props) => {
                     loading: false,
                     cards: []
                 }));
-                loadItems([]);
+                //loadItems([]);
             }      
         })
         .catch(() => setAppstate(appState => ({
@@ -53,7 +57,7 @@ const Content = (props) => {
             error: true
         })));
         return () => mounted = false;
-    }, [query, loadItems, page, home ]);
+    }, [state.query, page, home ]);
 
     return(
         <>
@@ -75,14 +79,5 @@ const Content = (props) => {
         </>
     )
 }
-
-const mapStateToProps = (state) => ({
-    items: state.items,
-    query: state.query
-  });
-
-  const mapDispatchToProps = {
-    loadItems
-  };
   
-export default connect(mapStateToProps, mapDispatchToProps)(Content);
+export default Content;

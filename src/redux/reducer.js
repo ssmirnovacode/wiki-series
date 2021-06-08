@@ -3,7 +3,7 @@ const initialState = {
     query: ''
 }
 
-const reducer = (state = initialState, action) => {
+const reducer = (state, action) => {
     switch (action.type) {
         case 'LOAD_ITEMS':
             return ({
@@ -21,4 +21,4 @@ const reducer = (state = initialState, action) => {
     }
 }
 
-export default reducer;
+export {reducer , initialState};

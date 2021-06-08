@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useReducer} from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -12,8 +12,9 @@ import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 //import MoreIcon from '@material-ui/icons/MoreVert';
 import {Link} from 'react-router-dom';
-import {connect} from 'react-redux';
-import {setQuery} from '../../redux/actions';
+//import {connect} from 'react-redux';
+//import {setQuery} from '../../redux/actions';
+import {reducer, initialState} from '../../redux/reducer';
 
 const Header = (props) =>  {
 
@@ -86,14 +87,16 @@ const Header = (props) =>  {
     },
   }));
 
-  const {setQuery} = props;
+  //const {setQuery} = props;
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const [endpoint, setEndpoint] = React.useState('');
 
   const handleSubmit = (event) => {
       event.preventDefault();
-      setQuery(endpoint);
-      console.log('Submit completed');;
+      dispatch(endpoint => ({type: 'SET_QUERY', payload: endpoint}));
+      console.log('Submit completed');
+      console.log(state.query);
   }
   const classes = useStyles();
 
@@ -229,13 +232,5 @@ const Header = (props) =>  {
       
 }
 
-const mapStateToProps = state => ({
-  items: state.items,
-  query: state.query
-});
 
-const mapDispatchToProps = {
-  setQuery
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default Header;
