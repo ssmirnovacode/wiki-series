@@ -1,13 +1,13 @@
 import React from 'react';
-import { fade, makeStyles } from '@material-ui/core/styles';
+import { /* fade,  */makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
+//import InputBase from '@material-ui/core/InputBase';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import SearchIcon from '@material-ui/icons/Search';
+//import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import {Link} from 'react-router-dom';
 
@@ -24,14 +24,14 @@ const Header = (props) =>  {
       marginRight: theme.spacing(2),
     },
     title: {
-      display: 'none',
+      /* display: 'none',
       [theme.breakpoints.up('sm')]: {
         display: 'block',
-      },
+      }, */
       textDecoration: 'none',
       color: 'white'
     },
-    search: {
+    /* search: {
       position: 'relative',
       borderRadius: theme.shape.borderRadius,
       backgroundColor: fade(theme.palette.common.white, 0.15),
@@ -54,7 +54,7 @@ const Header = (props) =>  {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-    },
+    }, */
     inputRoot: {
       color: 'inherit',
     },
@@ -82,13 +82,6 @@ const Header = (props) =>  {
     },
   }));
 
-  const [endpoint, setEndpoint] = React.useState('');
-
-  const handleSubmit = (event) => {
-      event.preventDefault();
-      props.setQuery(endpoint);
-      console.log('Submit completed');
-  }
   const classes = useStyles();
 
   //Material UI code ---------------------------
@@ -173,22 +166,7 @@ const Header = (props) =>  {
           <Typography className={classes.title} variant="h6" noWrap component={Link} to={'/'} >
             WIKI-series
           </Typography>
-          <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                  <SearchIcon />
-              </div>
-              <form onSubmit={(e) => handleSubmit(e)} className={classes.root}>
-                  <InputBase
-                      placeholder="Search…"
-                      classes={{
-                      root: classes.inputRoot,
-                      input: classes.inputInput,
-                      }}
-                      inputProps={{ 'aria-label': 'search' }}
-                      value={endpoint} onChange={(e) => setEndpoint(e.target.value)}
-                  />
-              </form>
-          </div>
+
           <div className={classes.grow} />
           {/* <div className={classes.sectionDesktop}>
 
