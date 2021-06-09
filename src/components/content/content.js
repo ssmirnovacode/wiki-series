@@ -12,7 +12,9 @@ const Content = (props) => {
 
     const classes = useStyles();
 
-    const { page, query, home } = props;
+    const { page, defQuery, home } = props;
+
+    const [query, setQuery] = useState(defQuery);
 
     const [appState, setAppstate] = useState({
         cards: [],
@@ -55,7 +57,7 @@ const Content = (props) => {
         <>
         <BreadCrumbs home={home} page={page} />
         {
-            !home && <SearchForm setFinalQuery={props.setQuery} />
+            !home && <SearchForm setFinalQuery={setQuery} />
         }
         <main className={classes.container}>
             

@@ -12,15 +12,15 @@ import baseURL from '../../assets/baseURL';
 
 const App = () => {
 
-    const [query, setQuery] = useState('black'); // initial query set to 'black' for demo purposes
+    const defQuery = 'black';
 
     return(
         <Router> 
             <Header />
             <Navigation />
-            <Route path={`${baseURL}/`} exact component={() => <Home query={query} />} /> 
-            <Route path={`${baseURL}/shows`} exact component={() => <Content setQuery={setQuery} query={query} page='shows' />} /> 
-            <Route path={`${baseURL}/people`} exact component={() => <Content setQuery={setQuery} query={query} page='people' />} />
+            <Route path={`${baseURL}/`} exact component={() => <Home defQuery={defQuery} />} /> 
+            <Route path={`${baseURL}/shows`} exact component={() => <Content defQuery={defQuery} page='shows' />} /> 
+            <Route path={`${baseURL}/people`} exact component={() => <Content defQuery={defQuery} page='people' />} />
             <Route path={`${baseURL}/shows/:id`} render={ ({match}) => {
                         const {id} = match.params;
                         return <ShowDetails page='shows' itemId={+id}/>
