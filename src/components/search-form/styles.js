@@ -29,10 +29,11 @@ const useStyles = makeStyles((theme) => ({
   },
   inputRoot: {
     color: 'inherit',
+    paddingLeft: '2rem',
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
-    paddingLeft: '3rem', // `calc(1rem + ${theme.spacing(4)}px)`,
+    paddingLeft: '2rem', // `calc(1rem + ${theme.spacing(4)}px)`,
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('md')]: {
