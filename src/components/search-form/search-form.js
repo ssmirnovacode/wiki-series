@@ -12,7 +12,6 @@ const SearchForm = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         setFinalQuery(endpoint);
-        console.log('Submit completed');
     }
 
     const classes = useStyles();
