@@ -12,11 +12,11 @@ const Content = (props) => {
 
     const classes = useStyles();
 
-    const { page, defQuery, home } = props;
+    const { page, defQuery, home } = props; // input
 
-    const [query, setQuery] = useState(defQuery);
+    const [query, setQuery] = useState(defQuery); //input
 
-    const [appState, setAppstate] = useState({
+    const [appState, setAppstate] = useState({ //output - appState
         cards: [],
         loading: false,
         error: false
