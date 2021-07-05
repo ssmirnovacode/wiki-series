@@ -1,21 +1,17 @@
 import {useState, useEffect} from 'react';
 import {getItems} from '../services/requests';
 
-const useCards = (page, query, home) => {
+const useCards = (endpointUrl, home=false) => {
 
     const [appState, setAppstate] = useState({ 
         cards: [],
-        loading: false,
+        loading: true,
         error: false
     });
 
     useEffect( () => {
         let mounted = true;
-        mounted && setAppstate(appState => ({
-            ...appState,
-            loading: true
-        }));
-        mounted && getItems(`https://api.tvmaze.com/search/${page}?q=${query}`) 
+        mounted && getItems(endpointUrl) 
         .then(res => {
             if (res.length > 0) {
                 setAppstate(appState => ({
@@ -38,7 +34,7 @@ const useCards = (page, query, home) => {
             error: true
         })));
         return () => mounted = false;
-    }, [query, page, home ]);
+    }, [home, endpointUrl]);
 
     return  appState;
 }

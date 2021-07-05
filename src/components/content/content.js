@@ -13,11 +13,13 @@ const Content = (props) => {
 
     const classes = useStyles();
 
-    const { page, defQuery, home } = props; // input
+    const { page, defQuery, home } = props; 
 
-    const [query, setQuery] = useState(defQuery); //input
+    const [query, setQuery] = useState(defQuery); 
 
-    const appState = useCards(page, query, home);
+    const endpointUrl = `https://api.tvmaze.com/search/${page}?q=${query}`;
+
+    const appState = useCards(endpointUrl, home);
 
 
     return(
