@@ -1,7 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import Loading from '../loading/loading';
 import Error from '../error/error';
-import { getItemById } from '../../services/requests';
 import ItemCardMain from '../item-card-main/item-card-main';
 import ItemCardInfo from '../item-card-info/item-card-info';
 import { makeStyles } from '@material-ui/core/styles';
