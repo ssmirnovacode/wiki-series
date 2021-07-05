@@ -1,46 +1,20 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import useStyles from './styles';
 import Loading from '../loading/loading';
 import Error from '../error/error';
-import { getItemById } from '../../services/requests';
 import ItemCardMain from '../item-card-main/item-card-main';
 import CreditItem from '../credit-item/credit-item';
 import BreadCrumbs from '../breadcrumbs/breadcrumbs';
+import usePerson from '../../hooks/usePerson';
 
 const PersonDetails = (props) => {
 
     const classes = useStyles();
 
-    const [itemState, setItemstate] = useState({
-        item: null,
-        castcredits: [],
-        characters: [],
-        loading: true,
-        error: false
-    });
-
     const endpointUrl = props.page === 'people' ? `https://api.tvmaze.com/${props.page}/${props.itemId}?embed=castcredits` :
-            `https://api.tvmaze.com/${props.page}/${props.itemId}`;             
+    `https://api.tvmaze.com/${props.page}/${props.itemId}`;    
 
-    useEffect( () => {
-        let mounted = true;
-        mounted && getItemById(endpointUrl)
-        .then(res => res && setItemstate({
-            item: res,
-            castcredits: props.page === 'people'&& res._embedded.castcredits.map(item => item._links.show.href),
-            characters: props.page === 'people'&& res._embedded.castcredits.map(item => item._links.character.href),
-            loading: false,
-            error: false,
-        }))
-        .catch(() => setItemstate({
-            item: null,
-            castcredits: [],
-            characters: [],
-            loading: false,
-            error: true
-        }));
-        return () => mounted = false;
-    }, [endpointUrl, props.page]);
+    const itemState = usePerson(endpointUrl, props.page);
 
     return(
         <>

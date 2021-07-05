@@ -9,7 +9,7 @@ https://ssmirnovacode.github.io/wiki-series/
 
 ## Technologies used in this project
  - ReactJS
- - React hooks
+ - React hooks (including custom hooks)
  - Material UI
  - REST API
 

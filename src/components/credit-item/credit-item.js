@@ -1,7 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import Loading from '../loading/loading';
 import Error from '../error/error';
-import { getItemById } from '../../services/requests';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -12,35 +11,16 @@ import StarsIcon from '@material-ui/icons/Star';
 import { Link } from 'react-router-dom';
 import baseURL from '../../assets/baseURL';
 import noImage from '../../assets/img/no-image.png';
+import useShow from '../../hooks/useShow';
 
 const CreditItem = (props) => { 
-
-    const [itemState, setItemState] = useState({
-        item: null,
-        error: false,
-        loading: true
-    });
 
     const urlWithHttps = 'https' + props.href.slice(5);
 
     const endpointUrl = props.page === 'characters' ? `${urlWithHttps}` :
             `${urlWithHttps}?embed=cast`; 
 
-    useEffect( () => {
-        let mounted = true;
-        mounted && getItemById(endpointUrl)
-        .then(res => res && setItemState({
-            item: res,
-            error: false,
-            loading: false
-        }))
-        .catch( () => setItemState({
-            item: null,
-            error: true,
-            loading: false
-        }));
-        return () => mounted = false;
-    }, [endpointUrl])
+    const itemState = useShow(endpointUrl);
 
     const useStyles = makeStyles(theme => ({
         root: {

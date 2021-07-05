@@ -1,7 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import Loading from '../loading/loading';
 import Error from '../error/error';
-import { getItemById } from '../../services/requests';
 import ItemCardMain from '../item-card-main/item-card-main';
 import ItemCardInfo from '../item-card-info/item-card-info';
 import { makeStyles } from '@material-ui/core/styles';
@@ -9,6 +8,7 @@ import ItemCardCast from '../item-card-cast/item-card-cast';
 import ItemCardPreviousEpisodes from '../item-card-previousEp/item-card-previousEp';
 import LastEpisode from '../last-episode/last-episode';
 import BreadCrumbs from '../breadcrumbs/breadcrumbs';
+import useShow from '../../hooks/useShow';
 
 const ShowDetails = (props) => {
 
@@ -20,31 +20,11 @@ const ShowDetails = (props) => {
 
     const classes = useStyles();
 
-    const [itemState, setItemstate] = useState({
-        item: null,
-        loading: true,
-        error: false
-    });
+    const endpointUrl = props.page === 'shows' ? `https://api.tvmaze.com/shows/${props.itemId}?embed[]=cast&embed[]=episodes` : `https://api.tvmaze.com/${props.page}/${props.itemId}`;
 
-    const endpointUrl = props.page === 'shows' ? `https://api.tvmaze.com/shows/${props.itemId}?embed[]=cast&embed[]=episodes` : `https://cors-anywhere.herokuapp.com/http://api.tvmaze.com/${props.page}/${props.itemId}`;
+    const itemState = useShow(endpointUrl);
 
-    useEffect( () => {
-        let mounted = true;
-        mounted && getItemById(endpointUrl)
-        .then(res => res && setItemstate({
-            item: res,
-            loading: false,
-            error: false
-        }))
-        .catch(() => setItemstate({
-            item: null,
-            loading: false,
-            error: true
-        }));
-        return () => mounted = false;
-    }, [endpointUrl]);
-
-    const lastEpisode = itemState.item && itemState.item._embedded.episodes[itemState.item._embedded.episodes.length-1];
+    const lastEpisode = itemState && itemState.item._embedded && itemState.item._embedded.episodes[itemState.item._embedded.episodes.length-1];
 
     return(
         <>
