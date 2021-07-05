@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/wiki-series/static/css/main.9c16268c.chunk.css",
-    "main.js": "/wiki-series/static/js/main.8c38872d.chunk.js",
-    "main.js.map": "/wiki-series/static/js/main.8c38872d.chunk.js.map",
+    "main.js": "/wiki-series/static/js/main.ba5a5b0d.chunk.js",
+    "main.js.map": "/wiki-series/static/js/main.ba5a5b0d.chunk.js.map",
     "runtime-main.js": "/wiki-series/static/js/runtime-main.1108069b.js",
     "runtime-main.js.map": "/wiki-series/static/js/runtime-main.1108069b.js.map",
-    "static/js/2.d18811fb.chunk.js": "/wiki-series/static/js/2.d18811fb.chunk.js",
-    "static/js/2.d18811fb.chunk.js.map": "/wiki-series/static/js/2.d18811fb.chunk.js.map",
+    "static/js/2.58887ed2.chunk.js": "/wiki-series/static/js/2.58887ed2.chunk.js",
+    "static/js/2.58887ed2.chunk.js.map": "/wiki-series/static/js/2.58887ed2.chunk.js.map",
     "index.html": "/wiki-series/index.html",
     "static/css/main.9c16268c.chunk.css.map": "/wiki-series/static/css/main.9c16268c.chunk.css.map",
-    "static/js/2.d18811fb.chunk.js.LICENSE.txt": "/wiki-series/static/js/2.d18811fb.chunk.js.LICENSE.txt",
+    "static/js/2.58887ed2.chunk.js.LICENSE.txt": "/wiki-series/static/js/2.58887ed2.chunk.js.LICENSE.txt",
     "static/media/no-image.0e049a38.png": "/wiki-series/static/media/no-image.0e049a38.png",
     "static/media/nothing.80846e03.jpg": "/wiki-series/static/media/nothing.80846e03.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.1108069b.js",
-    "static/js/2.d18811fb.chunk.js",
+    "static/js/2.58887ed2.chunk.js",
     "static/css/main.9c16268c.chunk.css",
-    "static/js/main.8c38872d.chunk.js"
+    "static/js/main.ba5a5b0d.chunk.js"
   ]
 }
