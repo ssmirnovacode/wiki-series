@@ -3,10 +3,11 @@ import Itemlist from '../itemlist/itemlist';
 import Loading from '../loading/loading';
 import Error from '../error/error';
 import nothing from '../../assets/img/nothing.jpg';
-import {getItems} from '../../services/requests';
+//import {getItems} from '../../services/requests';
 import useStyles from './styles';
 import BreadCrumbs from '../breadcrumbs/breadcrumbs';
 import SearchForm from '../search-form/search-form';
+import useCards from '../../hooks/useCards';
 
 const Content = (props) => {
 
@@ -16,42 +17,8 @@ const Content = (props) => {
 
     const [query, setQuery] = useState(defQuery); //input
 
-    const [appState, setAppstate] = useState({ //output - appState
-        cards: [],
-        loading: false,
-        error: false
-    });
+    const appState = useCards(page, query, home);
 
-    useEffect( () => {
-        let mounted = true;
-        mounted && setAppstate(appState => ({
-            ...appState,
-            loading: true
-        }));
-        mounted && getItems(`https://api.tvmaze.com/search/${page}?q=${query}`) //url depends on page
-        .then(res => {
-            if (res.length > 0) {
-                setAppstate(appState => ({
-                    ...appState,
-                    loading: false,
-                    cards: home ? res.slice(0,6) : res
-                }));
-            }
-            else {
-                setAppstate(appState => ({
-                    ...appState,
-                    loading: false,
-                    cards: []
-                }));
-            }      
-        })
-        .catch(() => setAppstate(appState => ({
-            ...appState,
-            loading: false,
-            error: true
-        })));
-        return () => mounted = false;
-    }, [query, page, home ]);
 
     return(
         <>

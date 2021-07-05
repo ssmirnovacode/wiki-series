@@ -1,12 +1,9 @@
-import React, {useState, useEffect} from 'react';
-import {getItems} from '../../services/requests';
-
+import {useState, useEffect} from 'react';
+import {getItems} from '../services/requests';
 
 const useCards = (page, query, home) => {
 
-    //const [query, setQuery] = useState(defQuery); //input
-
-    const [appState, setAppstate] = useState({ //output - appState
+    const [appState, setAppstate] = useState({ 
         cards: [],
         loading: false,
         error: false
@@ -18,7 +15,7 @@ const useCards = (page, query, home) => {
             ...appState,
             loading: true
         }));
-        mounted && getItems(`https://api.tvmaze.com/search/${page}?q=${query}`) //url depends on page
+        mounted && getItems(`https://api.tvmaze.com/search/${page}?q=${query}`) 
         .then(res => {
             if (res.length > 0) {
                 setAppstate(appState => ({
@@ -42,6 +39,8 @@ const useCards = (page, query, home) => {
         })));
         return () => mounted = false;
     }, [query, page, home ]);
+
+    return  appState;
 }
 
 export default useCards;
