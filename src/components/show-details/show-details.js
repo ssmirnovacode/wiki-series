@@ -9,7 +9,7 @@ import ItemCardCast from '../item-card-cast/item-card-cast';
 import ItemCardPreviousEpisodes from '../item-card-previousEp/item-card-previousEp';
 import LastEpisode from '../last-episode/last-episode';
 import BreadCrumbs from '../breadcrumbs/breadcrumbs';
-import useItem from '../../hooks/useItem';
+import useShow from '../../hooks/useShow';
 
 const ShowDetails = (props) => {
 
@@ -23,7 +23,7 @@ const ShowDetails = (props) => {
 
     const endpointUrl = props.page === 'shows' ? `https://api.tvmaze.com/shows/${props.itemId}?embed[]=cast&embed[]=episodes` : `https://api.tvmaze.com/${props.page}/${props.itemId}`;
 
-    const itemState = useItem(endpointUrl);
+    const itemState = useShow(endpointUrl);
 
     const lastEpisode = itemState && itemState.item._embedded && itemState.item._embedded.episodes[itemState.item._embedded.episodes.length-1];
 

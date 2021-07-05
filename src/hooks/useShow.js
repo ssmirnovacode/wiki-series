@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 import {getItemById} from '../services/requests';
 
-const useItem = (endpointUrl) => {
+const useShow = (endpointUrl) => {
 
     const [itemState, setItemstate] = useState({
         item: {},
@@ -40,4 +40,4 @@ const useItem = (endpointUrl) => {
     return itemState;
 }
 
-export default useItem;
+export default useShow;
