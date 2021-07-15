@@ -45,7 +45,7 @@ const ItemCardMain = (props) => {
                         <>
                         <Typography className={classes.descrText}  variant="body2" component="p">
                             {
-                                country && <img src={getCountryCode(country.code)} alt='country' className={classes.flag} />
+                                country && getCountryCode(country.code) && <img src={getCountryCode(country.code)} alt='country' className={classes.flag} />
                             }
                              {country && country.name}
                         </Typography>

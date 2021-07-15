@@ -48,7 +48,7 @@ const ItemCardInfo = (props) => {
             <CardContent>
                 <Typography gutterBottom variant="h5" component="h2" className={classes.title} color="textSecondary">
                     {name} {
-                        network && <img src={getCountryCode(network.country.code)} alt='country' className={classes.flag} />
+                        network && getCountryCode(network.country.code) && <img src={getCountryCode(network.country.code)} alt={network.country.code} className={classes.flag} />
                     }
                 </Typography>
                 {
