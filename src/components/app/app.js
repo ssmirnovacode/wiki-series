@@ -21,17 +21,17 @@ const App = () => {
             <Navigation />
             <Route path={`${baseURL}/`} exact component={() => <Home defQuery={defQuery} />} /> 
             <PageContext.Provider value={'shows'}>
-                <Route path={`${baseURL}/shows`} exact component={() => <Content defQuery={defQuery} /* page='shows'  *//>} />
+                <Route path={`${baseURL}/shows`} exact component={() => <Content defQuery={defQuery} />} />
                 <Route path={`${baseURL}/shows/:id`} render={ ({match}) => {
                         const {id} = match.params;
-                        return <ShowDetails /* page='shows'  */itemId={+id}/>
+                        return <ShowDetails itemId={+id}/>
                     }}/> 
             </PageContext.Provider>
             <PageContext.Provider value={'people'}>
-                <Route path={`${baseURL}/people`} exact component={() => <Content defQuery={defQuery} /* page='people' */ />} />
+                <Route path={`${baseURL}/people`} exact component={() => <Content defQuery={defQuery} />} />
                 <Route path={`${baseURL}/people/:id`} render={ ({match}) => {
                         const {id} = match.params;
-                        return <PersonDetails /* page='people' */ itemId={+id}/> 
+                        return <PersonDetails itemId={+id}/> 
                     }}/>
             </PageContext.Provider>
             <Footer />

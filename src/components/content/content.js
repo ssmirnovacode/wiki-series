@@ -13,7 +13,7 @@ const Content = (props) => {
 
     const classes = useStyles();
 
-    const { /* page,  */defQuery, home } = props; 
+    const { defQuery, home } = props; 
 
     const [query, setQuery] = useState(defQuery); 
 

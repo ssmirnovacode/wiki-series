@@ -1,6 +1,7 @@
 import React from 'react';
 import Content from '../content/content';
 import useStyles from './styles';
+import PageContext from '../../context/PageContext';
 
 const Home = ({defQuery}) => {
 
@@ -9,9 +10,13 @@ const Home = ({defQuery}) => {
     return(
         <section className={classes.container}>
           <h2 className={classes.title}>Trending TV shows</h2>
-          <Content home defQuery={defQuery} page='shows' />
+          <PageContext.Provider value={'shows'}>
+            <Content home defQuery={defQuery}/>
+          </PageContext.Provider>
           <h2 className={classes.title}>Trending actors</h2>
-          <Content home defQuery={defQuery} page='people' />
+          <PageContext.Provider value={'people'}>
+            <Content home defQuery={defQuery} />
+          </PageContext.Provider>
         </section>
     )
 }
