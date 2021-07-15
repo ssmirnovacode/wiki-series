@@ -17,7 +17,7 @@ const PersonDetails = (props) => {
     const endpointUrl = pageValue === 'people' ? `https://api.tvmaze.com/${pageValue}/${props.itemId}?embed=castcredits` :
     `https://api.tvmaze.com/${pageValue}/${props.itemId}`;    
 
-    const itemState = usePerson(endpointUrl, props.page);
+    const itemState = usePerson(endpointUrl, pageValue);
 
     return(
         <>
