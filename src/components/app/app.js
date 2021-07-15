@@ -9,6 +9,7 @@ import ShowDetails from '../show-details/show-details';
 import PersonDetails from '../person-details/person-details';
 import Home from '../home/home';
 import baseURL from '../../assets/baseURL';
+import PageContext from '../../context/PageContext';
 
 const App = () => {
 
@@ -19,16 +20,20 @@ const App = () => {
             <Header />
             <Navigation />
             <Route path={`${baseURL}/`} exact component={() => <Home defQuery={defQuery} />} /> 
-            <Route path={`${baseURL}/shows`} exact component={() => <Content defQuery={defQuery} page='shows' />} /> 
-            <Route path={`${baseURL}/people`} exact component={() => <Content defQuery={defQuery} page='people' />} />
-            <Route path={`${baseURL}/shows/:id`} render={ ({match}) => {
+            <PageContext.Provider value={'shows'}>
+                <Route path={`${baseURL}/shows`} exact component={() => <Content defQuery={defQuery} /* page='shows'  *//>} />
+                <Route path={`${baseURL}/shows/:id`} render={ ({match}) => {
                         const {id} = match.params;
-                        return <ShowDetails page='shows' itemId={+id}/>
-                    }}/>
-            <Route path={`${baseURL}/people/:id`} render={ ({match}) => {
+                        return <ShowDetails /* page='shows'  */itemId={+id}/>
+                    }}/> 
+            </PageContext.Provider>
+            <PageContext.Provider value={'people'}>
+                <Route path={`${baseURL}/people`} exact component={() => <Content defQuery={defQuery} /* page='people' */ />} />
+                <Route path={`${baseURL}/people/:id`} render={ ({match}) => {
                         const {id} = match.params;
-                        return <PersonDetails page='people' itemId={+id}/> 
+                        return <PersonDetails /* page='people' */ itemId={+id}/> 
                     }}/>
+            </PageContext.Provider>
             <Footer />
         </Router>
     )

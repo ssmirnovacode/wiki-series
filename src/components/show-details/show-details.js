@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Loading from '../loading/loading';
 import Error from '../error/error';
 import ItemCardMain from '../item-card-main/item-card-main';
@@ -9,6 +9,7 @@ import ItemCardPreviousEpisodes from '../item-card-previousEp/item-card-previous
 import LastEpisode from '../last-episode/last-episode';
 import BreadCrumbs from '../breadcrumbs/breadcrumbs';
 import useShow from '../../hooks/useShow';
+import PageContext from '../../context/PageContext';
 
 const ShowDetails = (props) => {
 
@@ -18,9 +19,11 @@ const ShowDetails = (props) => {
         }
     });
 
+    const pageValue = useContext(PageContext);
+
     const classes = useStyles();
 
-    const endpointUrl = props.page === 'shows' ? `https://api.tvmaze.com/shows/${props.itemId}?embed[]=cast&embed[]=episodes` : `https://api.tvmaze.com/${props.page}/${props.itemId}`;
+    const endpointUrl = pageValue === 'shows' ? `https://api.tvmaze.com/shows/${props.itemId}?embed[]=cast&embed[]=episodes` : `https://api.tvmaze.com/${pageValue}/${props.itemId}`;
 
     const itemState = useShow(endpointUrl);
 
@@ -28,11 +31,11 @@ const ShowDetails = (props) => {
 
     return(
         <>
-        <BreadCrumbs home={false} page={props.page} title={itemState.item && itemState.item.name}/>
+        <BreadCrumbs home={false} page={pageValue} title={itemState.item && itemState.item.name}/>
         {
             itemState.loading ? <Loading /> : itemState.error ? <Error /> : 
                 <div className={classes.detailsContainer}>
-                    <ItemCardMain className={classes.main} page={props.page} item={itemState.item} />
+                    <ItemCardMain className={classes.main} page={pageValue} item={itemState.item} />
                     <ItemCardInfo className={classes.info} item={itemState.item} />
                     <LastEpisode item={lastEpisode} />
                     <ItemCardPreviousEpisodes className={classes.episodes} episodes={itemState.item._embedded.episodes} />

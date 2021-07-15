@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import useStyles from './styles';
 import Loading from '../loading/loading';
 import Error from '../error/error';
@@ -6,25 +6,28 @@ import ItemCardMain from '../item-card-main/item-card-main';
 import CreditItem from '../credit-item/credit-item';
 import BreadCrumbs from '../breadcrumbs/breadcrumbs';
 import usePerson from '../../hooks/usePerson';
+import PageContext from '../../context/PageContext';
 
 const PersonDetails = (props) => {
 
     const classes = useStyles();
 
-    const endpointUrl = props.page === 'people' ? `https://api.tvmaze.com/${props.page}/${props.itemId}?embed=castcredits` :
-    `https://api.tvmaze.com/${props.page}/${props.itemId}`;    
+    const pageValue = useContext(PageContext);
+
+    const endpointUrl = pageValue === 'people' ? `https://api.tvmaze.com/${pageValue}/${props.itemId}?embed=castcredits` :
+    `https://api.tvmaze.com/${pageValue}/${props.itemId}`;    
 
     const itemState = usePerson(endpointUrl, props.page);
 
     return(
         <>
-        <BreadCrumbs home={false} page={props.page} title={itemState.item && itemState.item.name}/>
+        <BreadCrumbs home={false} page={pageValue} title={itemState.item && itemState.item.name}/>
         {
             itemState.loading ? <Loading /> : itemState.error ? <Error /> : 
                 <div className={classes.detailsContainer}>
                     <ItemCardMain className={classes.main} item={itemState.item} />
                     {
-                        props.page === 'people'&& <>
+                        pageValue === 'people'&& <>
                         <div className={classes.shows}>
                             <h2 className={classes.title}>Known for: </h2><br/>
                             <div className={classes.items}>

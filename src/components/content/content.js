@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import Itemlist from '../itemlist/itemlist';
 import Loading from '../loading/loading';
 import Error from '../error/error';
@@ -7,22 +7,25 @@ import useStyles from './styles';
 import BreadCrumbs from '../breadcrumbs/breadcrumbs';
 import SearchForm from '../search-form/search-form';
 import useCards from '../../hooks/useCards';
+import PageContext from '../../context/PageContext';
 
 const Content = (props) => {
 
     const classes = useStyles();
 
-    const { page, defQuery, home } = props; 
+    const { /* page,  */defQuery, home } = props; 
 
     const [query, setQuery] = useState(defQuery); 
 
-    const endpointUrl = `https://api.tvmaze.com/search/${page}?q=${query}`;
+    const pageValue = useContext(PageContext);
+
+    const endpointUrl = `https://api.tvmaze.com/search/${pageValue}?q=${query}`;
 
     const appState = useCards(endpointUrl, home);
 
     return(
         <>
-        <BreadCrumbs home={home} page={page} />
+        <BreadCrumbs home={home} page={pageValue} />
         {
             !home && <SearchForm setFinalQuery={setQuery} />
         }
@@ -31,7 +34,7 @@ const Content = (props) => {
             {
                 appState.loading ? <Loading /> :
                 appState.error ? <Error /> :
-                appState.cards.length > 0 ? <Itemlist page={page} items={appState.cards} /> : 
+                appState.cards.length > 0 ? <Itemlist page={pageValue} items={appState.cards} /> : 
                 <>
                 <h2 className={classes.title}>Nothing was found for your query...</h2>
                 <div className={classes.imgBox}>
