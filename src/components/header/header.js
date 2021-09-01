@@ -8,6 +8,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import {Link} from 'react-router-dom';
+import baseURL from '../../assets/baseURL';
 
 const Header = (props) =>  {
 
@@ -137,7 +138,7 @@ const Header = (props) =>  {
           >
             <MenuIcon />
           </IconButton> */}
-          <Typography className={classes.title} variant="h6" noWrap component={Link} to={'/'} >
+          <Typography className={classes.title} variant="h6" noWrap component={Link} to={`${baseURL}`} >
             WIKI-series
           </Typography>
 
